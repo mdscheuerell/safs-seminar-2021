@@ -408,7 +408,12 @@ class: middle, center, inverse
 
 ---
 
-# Time series of size
+class: frimg, center
+background-image: url(figs/ts_plot_both_sizes.png)
+background-position: 35% 65%
+background-size: 90%
+
+# Sizes of fish from derby & surveys
 
 
 
@@ -443,7 +448,12 @@ class: middle, center
 
 ---
 
-# Model fits and data
+class: frimg, center
+background-image: url(figs/ts_plot_both_sizes_fits.png)
+background-position: 35% 65%
+background-size: 90%
+
+# Estimated trends in size
 
 ---
 
