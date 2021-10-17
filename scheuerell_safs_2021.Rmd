@@ -1,0 +1,868 @@
+---
+output:
+  xaringan::moon_reader:
+    css: "my-theme.css"
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+---
+
+```{r setup, include=FALSE, message=FALSE}
+options(htmltools.dir.version = FALSE, servr.daemon = TRUE)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, dpi=300, out.height="100%", out.width="100%")
+library(icons)
+```
+
+class: center, middle
+# Examining long-term trends in the size and abundance of at-risk salmonids in the Pacific Northwest
+## Mark Scheuerell
+_U.S. Geological Survey<br>Washington Cooperative Fish and Wildlife Research Unit<br>School of Aquatic and Fishery Sciences<br>University of Washington<br>Seattle, WA_
+
+.futnote.purple-text[`r icon_style(fontawesome("envelope"), fill = "#844870")` scheuerl@uw.edu]
+
+.citation.blue-text[`r icon_style(fontawesome("twitter"), fill = "#488fdf")` @mark_scheuerell]
+
+---
+
+class: inverse, center, middle
+
+# Conterminous bull trout in the western US
+
+---
+
+# Bull trout assessment team
+
+.pull-left[
+
+### .green-text[ Brett Bowersox (IDFG) ]
+
+### .green-text[ Dan Brewer (USFWS) ]
+
+### .blue-text[ Erin Britton-Kuttel (USFWS) ]
+
+### .blue-text[ Sean Finn (USFWS) ]
+
+### .green-text[ Stephanie Gunckel (ODFW) ]
+
+]
+
+.pull-right[
+
+### .blue-text[ Craig Hansen (USFWS) ]
+
+### .blue-text[ Rebecca Migala (USFWS) ]
+
+### .blue-text[ Dan Nolfi (USFWS) ]
+
+### .green-text[ Marie Winkowski (WDFW) ]
+
+### .blue-text[ Alan Yanahan (USFWS) ]
+
+]
+
+
+---
+
+class: inverse, center, middle
+
+# A model for estimating population trends with 2 general parts
+
+---
+
+# Part 1: State model
+
+## Describes the .blue-text[true state of nature] over time or space
+
+```{r state_diag, dpi=300, fig.height=4, fig.width=8, out.height="100%", out.width="100%", fig.align='center', echo=FALSE, warning=FALSE}
+par(mai=c(0.8,0.8,0,0), omi=rep(0,4))
+## boundaries
+ss <- 5
+nn <- 7
+rr <- ss*3
+cc <- ss*nn
+## mid-points
+xm <- ss/2 + seq(0,cc-ss,ss)
+ymt <- rr - ss/2
+ymb <- ss/2
+## arrow locs
+x0t <- seq(ss, by=2*ss, len=3)
+x1t <- x0t + ss
+## empty plot space
+plot(c(0,cc), c(0,rr), type="n", xlab="", ylab="",
+     xaxt="n", yaxt="n", bty="n")
+## top row: state
+symbols(x=xm[c(1,3,5,7)], y=rep(ymt,4), circles=rep(ss/2,4),
+        lty="solid",  fg=NA, bg="#488fdf",
+        inches=FALSE, add=TRUE, lwd=3)
+text("Truth", x=-ss, y=ymt, adj=c(0,0.5), xpd=NA,
+     cex=2, col="#488fdf")
+arrows(x0=x0t,x1=x1t,y0=ymt, col="#488fdf", lwd=3, length=0.12)
+## Time or space
+arrows(x0=ss/2, x1=cc-ss/2, y0=-ss/3+ss*2,
+       length=0.12, lwd=3, xpd=NA)
+text("Time or space", x=cc/2, y=-ss/2+ss*2, xpd=NA, pos=1, cex=2)
+```
+
+---
+
+# States of nature might be
+
+.green-text[
+## Animal location
+]
+.blue-text[
+## Species density
+]
+.orange-text[
+## Age structure
+]
+.purple-text[
+## Reproductive status
+]
+
+---
+
+class: frimg, center, bottom, black-back
+background-image: url(figs/venice_carnival.jpg)
+background-size: 100%
+
+## .white-text[Revealing the true state requires observations]
+### .black-text[-]
+
+---
+
+class: center, middle, inverse
+
+# Observing nature can be easy
+
+---
+
+class: frimg, bottom, right
+background-image: url(figs/sockeye.jpg)
+background-size: cover
+
+# .white-text[How many sockeye are there?]
+
+---
+
+class: center, middle, inverse
+
+# Observing nature can also be hard
+
+---
+
+class: frimg, bottom, right
+background-image: url(figs/sockeye.jpg)
+background-size: cover
+
+# .white-text[How many mayflies are there?]
+
+---
+
+# Part 2: Observation model
+
+## .purple-text[Data] = .blue-text[Truth] &#177; .red-text[Errors]
+
+---
+
+# Part 2: Observation model
+
+## .purple-text[Data] = .blue-text[Truth] &#177; .red-text[Errors]
+
+```{r obs_diag, dpi=300, fig.height=4, fig.width=8, out.height="100%", out.width="100%", fig.align='center', echo=FALSE, warning=FALSE}
+par(mai=c(0.8,0.8,0,0), omi=rep(0,4))
+## arrow locs
+x0t <- seq(ss, by=2*ss, len=3)
+x1t <- x0t + ss
+y0b <- rr - ss
+y1b <- ss
+## empty plot space
+plot(c(0,cc), c(0,rr), type="n", xlab="", ylab="",
+     xaxt="n", yaxt="n", bty="n")
+## top row: state
+symbols(x=xm[c(1,3,5,7)], y=rep(ymt,4), circles=rep(ss/2,4),
+        lty="solid",  fg=NA, bg="#488fdf",
+        inches=FALSE, add=TRUE, lwd=3)
+text("Truth", x=-ss, y=ymt, adj=c(0,0.5), xpd=NA,
+     cex=2, col="#488fdf")
+## arrows
+arrows(x0=x0t,x1=x1t,y0=ymt, col="#488fdf", lwd=3, length=0.12)
+## bottom row: obs
+symbols(x=xm[c(1,3,5,7)], y=rep(ss/2,4), circles=rep(ss/2,4),
+        lty="solid",  fg=NA, bg="#844870",
+        inches=FALSE, add=TRUE, lwd=3)
+text("Data", x=-ss, y=ss/2, adj=c(0,0.5), xpd=NA,
+     cex=2, col="#844870")
+## arrows
+arrows(x0=xm[c(1,3,5,7)], y0=y0b, y1=y1b,
+       col="#c10101", lwd=3, length=0.12)
+## Time or space
+arrows(x0=ss/2, x1=cc-ss/2, y0=-ss/3,
+       length=0.12, lwd=3, xpd=NA)
+text("Time or space", x=cc/2, y=-ss/2, xpd=NA, pos=1, cex=2)
+```
+
+---
+
+class: inverse, center, middle
+
+# OK, but why bother?
+
+---
+
+# Advantages
+
+## 1. Can combine many different .purple-text[data types]
+
+.center.purple-text[
+### Changes in observers or sensors
+
+### Varying survey locations & effort
+
+### Direct & remote sampling  
+]
+
+---
+
+# Advantages
+
+## 2. .gray-text[Missing data] are easily accommodated
+
+```{r obs_NA, dpi=300, fig.height=4, fig.width=8, out.height="90%", out.width="90%", fig.align='center', echo=FALSE, warning=FALSE}
+par(mai=c(0.8,0.8,0,0), omi=rep(0,4))
+## arrow locs
+x0t <- seq(ss, by=2*ss, len=3)
+x1t <- x0t + ss
+y0b <- rr - ss
+y1b <- ss
+## empty plot space
+plot(c(0,cc), c(0,rr), type="n", xlab="", ylab="",
+     xaxt="n", yaxt="n", bty="n")
+## top row: state
+symbols(x=xm[c(1,3,5,7)], y=rep(ymt,4), circles=rep(ss/2,4),
+        lty="solid",  fg=NA, bg="#488fdf",
+        inches=FALSE, add=TRUE, lwd=3)
+text("Truth", x=-ss, y=ymt, adj=c(0,0.5), xpd=NA,
+     cex=2, col="#488fdf")
+## arrows
+arrows(x0=x0t,x1=x1t,y0=ymt, col="#488fdf", lwd=3, length=0.12)
+## bottom row: obs
+symbols(x=xm[c(1,3,7)], y=rep(ss/2,3), circles=rep(ss/2,3),
+        lty="solid",  fg=NA, bg="#844870",
+        inches=FALSE, add=TRUE, lwd=3)
+text("Data", x=-ss, y=ss/2, adj=c(0,0.5), xpd=NA,
+     cex=2, col="#844870")
+## NA's
+symbols(x=xm[5], y=ss/2, circles=ss/2,
+        lty="solid",  fg=NA, bg="#656565",
+        inches=FALSE, add=TRUE, lwd=3)
+text("NA", x=xm[5], y=ss/2, cex=1.8, col="#ffffff")
+## arrows
+arrows(x0=xm[c(1,3,7)], y0=y0b, y1=y1b,
+       col="#c10101", lwd=3, length=0.12)
+## Time or space
+arrows(x0=ss/2, x1=cc-ss/2, y0=-ss/3,
+       length=0.12, lwd=3, xpd=NA)
+text("Time or space", x=cc/2, y=-ss/2, xpd=NA, pos=1, cex=2)
+```
+
+---
+
+class: frimg
+background-image: url(figs/Jonsen2016.png)
+background-position: 50% 60%
+background-size: 70%
+
+# Advantages
+
+## 3. Improved accuracy & precision
+
+---
+
+class: frimg
+background-image: url(figs/robin.jpg)
+background-position: 50% 80%
+background-size: 40%
+
+# Advantages
+
+## 4. .gray-text[Data-poor] benefit from .green-text[data-rich]
+
+
+---
+
+class: inverse, center, middle
+
+# Model for the state of nature
+
+
+---
+
+# Population dynamics
+
+### .blue-text[Exponential growth/decline in continuous time]
+
+$$N(t) = N_0 \exp(u) \exp(w t)$$
+
+
+---
+
+# Population dynamics
+
+### .blue-text[Exponential growth/decline in continuous time]
+
+$$N(t) = N_0 ~ \underbrace{\exp(u)}_{\substack{\text{growth} \\ \text{rate}}} \exp(w t)$$
+
+
+---
+
+# Population dynamics
+
+### .blue-text[Exponential growth/decline in continuous time]
+
+$$N(t) = N_0 \exp(u) \underbrace{\exp(w t)}_{\substack{\text{stochastic} \\ \text{environment}}}$$
+
+
+---
+
+# Population dynamics
+
+### .blue-text[Exponential growth/decline in continuous time]
+
+$$N(t) = N_0 \exp(u) \exp(w t)$$
+
+<br>
+
+### .blue-text[In discrete time, with a time step of 1 year]
+
+$$N_t = N_{t-1} \exp(u + w_t)$$
+
+---
+
+# Population dynamics
+
+### .blue-text[In discrete time, with a time step of 1 year, the model is]
+
+$$N_t = N_{t-1} \exp(u + w_t)$$
+
+<br>
+
+### .blue-text[Taking the logarithm of both sides yields]
+
+$$\log (N_t) = \log (N_{t-1}) + u + w_t$$
+
+---
+
+# Population dynamics
+
+### .blue-text[We can define]
+
+$$x = \log (N)$$
+
+### .blue-text[ such that ]
+
+$$\log (N_t) = \log (N_{t-1}) + u + w_t \\ \Downarrow \\ x_t = x_{t-1} + u + w_t$$
+
+---
+
+# Biased random walk
+
+### .blue-text[If we assume that the errors are white noise]
+
+$$w_t \sim \text{N}(0, q)$$
+
+### .blue-text[ then our model of populations dynamics]
+
+$$x_t = x_{t-1} + u + w_t$$
+
+### .blue-text[is a so-called *biased random walk*]
+
+
+---
+
+# Examples of biased random walks
+
+```{r ex_biased_rw, fig.dim = c(8,5), fig.align = 'center'}
+set.seed(123)
+
+x1 <- cumsum(rnorm(30, 0.1, 0.3)) + 10
+
+x2 <- cumsum(rnorm(30, -0.1, 0.3)) + 10
+
+clr1 <- c("#f7fbff",
+          "#deebf7",
+          "#c6dbef",
+          "#9ecae1",
+          "#6baed6",
+          "#4292c6",
+          "#2171b5",
+          "#08519c",
+          "#08306b")
+
+clr2 <- c("#fff5f0",
+          "#fee0d2",
+          "#fcbba1",
+          "#fc9272",
+          "#fb6a4a",
+          "#ef3b2c",
+          "#cb181d",
+          "#a50f15",
+          "#67000d")
+
+par(mfrow = c(1,2), mai = c(1, 1, 1, 0))
+plot.ts(x1, las = 1, col = "dodgerblue", lwd = 2, ylim = c(8, 16),
+        ylab = expression(italic(x[t])), main = "Positive bias")
+for(i in 1:9) {
+  lines(cumsum(rnorm(30, 0.1, 0.3)) + 10,
+        col = clr1[i], lwd = 2)
+}
+
+plot.ts(x2, las = 1, col = "indianred", lwd = 2,  ylim = c(4, 12),
+        ylab = expression(italic(x[t])), main = "Negative bias")
+for(i in 1:9) {
+  lines(cumsum(rnorm(30, -0.1, 0.3)) + 10,
+        col = clr2[i], lwd = 2)
+}
+```
+
+
+---
+
+class: inverse, center, middle
+
+# Observation (data) model
+
+
+---
+
+# Observation model
+
+### .blue-text[ In log-space ]
+
+$$\underbrace{y_t}_{\substack{\text{observed} \\ \text{counts}}} = \underbrace{x_t}_{\substack{\text{true} \\ \text{counts}}} + \underbrace{v_t}_{\substack{\text{observer} \\ \text{error}}}$$
+
+### .blue-text[ where ]
+
+$$v_t \sim \text{N}(0, r)$$
+
+---
+
+# Examples with observation error
+
+```{r ex_biased_rw_y, fig.dim = c(8,5), fig.align = 'center'}
+y1 <- x1 + rnorm(30, 0, 0.2)
+
+y2 <- x2 + rnorm(30, 0, 0.2)
+
+par(mfrow = c(1,2), mai = c(1, 1, 1, 0))
+plot.ts(x1, las = 1, col = "gray", lwd = 2, ylim = range(x1, y1),
+        ylab = expression(italic(x[t])), main = "Positive bias")
+lines(y1, col = "dodgerblue", lwd = 2)
+
+plot.ts(x2, las = 1, col = "gray", lwd = 2, ylim = range(x2, y2),
+        ylab = expression(italic(x[t])), main = "Negative bias")
+lines(y2, col = "indianred", lwd = 2)
+```
+
+
+---
+
+class: inverse, center, middle
+
+# Multiple time series of abundance
+
+
+---
+
+# Many populations within many core areas
+
+### .blue-text[ 4 states ]
+
+### .purple-text[ 8 recovery units ]
+
+### .orange-text[ 61 core areas ]
+
+### .green-text[ 242 populations ]
+
+
+---
+
+# Expanding our model for multiple core areas
+
+### .blue-text[ We're estimating population trends at the level of *core areas* ]
+
+$$\begin{gathered}
+    x_{1,t} = x_{1,t-1} + u_1 + w_{1,t} \\
+    x_{2,t} = x_{2,t-1} + u_2 + w_{2,t} \\
+    \vdots \\
+    x_{n,t} = x_{n,t-1} + u_n + w_{n,t} \\
+  \end{gathered}$$
+
+
+---
+
+# Expanding our model for multiple core areas
+
+### .blue-text[ In matrix notation we have ]
+
+$$\begin{bmatrix}
+    x_1 \\
+    x_2 \\
+    \vdots \\
+    x_n \end{bmatrix}_t = 
+ \begin{bmatrix}
+    x_1 \\
+    x_2 \\
+    \vdots \\
+    x_n \end{bmatrix}_{t-1} + 
+ \begin{bmatrix}
+    u_1 \\
+    u_2 \\
+    \vdots \\
+    u_n \end{bmatrix} + 
+ \begin{bmatrix}
+    w_{1} \\
+    w_{2} \\
+    \vdots \\
+    w_{n} \end{bmatrix}_t$$
+    
+
+---
+
+# Observation model for multiple time series
+
+### .blue-text[ Core areas have from 1-22 populations within them ]
+
+### .blue-text[ We need a way to map populations to their respective core area ]
+
+
+---
+
+# Observation model for multiple time series
+
+### .blue-text[ Example with 5 popns (1-5) and 2 core areas (A & B) ]
+
+$$\begin{bmatrix}
+    y_{1} \\
+    y_{2} \\
+    y_{3} \\
+    y_{4} \\
+    y_{5} \end{bmatrix}_t = 
+ \begin{bmatrix}
+    x_{A} \\
+    x_{A} \\
+    x_{B} \\
+    x_{B} \\
+    x_{B} \end{bmatrix}_t + 
+ \begin{bmatrix}
+    a_1 \\
+    a_2 \\
+    a_3 \\
+    a_4 \\
+    a_5 \end{bmatrix} + 
+ \begin{bmatrix}
+    v_{1} \\
+    v_{2} \\
+    v_{3} \\
+    v_{4} \\
+    v_{5} \end{bmatrix}_t$$
+    
+
+---
+
+# Full state-space form
+
+### .blue-text[ Mapping populations onto core areas ]
+
+$$\begin{bmatrix}
+    y_{1} \\
+    y_{2} \\
+    y_{3} \\
+    y_{4} \\
+    y_{5} \end{bmatrix}_t = 
+\underbrace{\begin{bmatrix}
+    1 & 0 \\
+    1 & 0 \\
+    0 & 1 \\
+    0 & 1 \\
+    0 & 1 \end{bmatrix}}_{\substack{\text{rows are popns} \\ \text{cols are cores}}}  
+ \begin{bmatrix}
+    x_{A} \\
+    x_{B} \end{bmatrix}_t +
+ \begin{bmatrix}
+    a_1 \\
+    a_2 \\
+    a_3 \\
+    a_4 \\
+    a_5 \end{bmatrix} + 
+ \begin{bmatrix}
+    v_{1} \\
+    v_{2} \\
+    v_{3} \\
+    v_{4} \\
+    v_{5} \end{bmatrix}_t$$
+
+
+---
+
+# Full state-space form
+
+### .blue-text[ Combining the observation & state models ]
+
+$$\begin{bmatrix}
+    y_{1} \\
+    y_{2} \\
+    y_{3} \\
+    y_{4} \\
+    y_{5} \end{bmatrix}_t = 
+\begin{bmatrix}
+    1 & 0 \\
+    1 & 0 \\
+    0 & 1 \\
+    0 & 1 \\
+    0 & 1 \end{bmatrix}  
+ \begin{bmatrix}
+    x_{A} \\
+    x_{B} \end{bmatrix}_t +
+ \begin{bmatrix}
+    a_1 \\
+    a_2 \\
+    a_3 \\
+    a_4 \\
+    a_5 \end{bmatrix} + 
+ \begin{bmatrix}
+    v_{1} \\
+    v_{2} \\
+    v_{3} \\
+    v_{4} \\
+    v_{5} \end{bmatrix}_t \\[50pt]
+    \begin{bmatrix}
+    x_{A} \\
+    x_{B} \end{bmatrix}_t = 
+ \begin{bmatrix}
+    x_{A} \\
+    x_{B} \end{bmatrix}_{t-1} + 
+ \begin{bmatrix}
+    u_A \\
+    u_B \end{bmatrix} + 
+ \begin{bmatrix}
+    w_A \\
+    w_B \end{bmatrix}_t$$
+
+
+---
+
+# Example of 3 observations of a state
+
+```{r multi_obs, fig.dim = c(6,4), fig.align = 'center'}
+y2 <- x1 + rnorm(30, 0, 0.4)
+y3 <- x1 + rnorm(30, 0, 0.5)
+
+## set colormap
+clr <- viridisLite::mako(4, begin = 0.4, end = 0.9)
+
+par(mai = c(1, 1, 0.1, 0.1))
+
+plot.ts(x1, las = 1, col = "gray", lwd = 2, ylim = range(x1, y1, y2, y3),
+        ylab = expression(paste(italic(x[t]), "  or  ", italic(y[t]))), main = "")
+lines(y1, col = clr[1], lwd = 2)
+lines(y2, col = clr[2], lwd = 2)
+lines(y3, col = clr[3], lwd = 2)
+```
+
+
+---
+
+# Different survey methods have different observation variances
+
+### .blue-text[ For example, weir counts are more accurate than snorkel surveys ]
+
+### .blue-text[ Multiple surveys of each type help inform the variance estimates ]
+
+---
+
+# Fitting the models
+
+### .blue-text[ We used the time period from 1991-2020 ]
+
+### .blue-text[ Time series needed at least 10 years of non-missing data ]
+
+
+---
+
+# Fitting the models
+
+### .blue-text[ We used the time period from 1991-2020 ]
+
+### .blue-text[ Time series needed at least 10 years of non-missing data ]
+
+### .green-text[ All models were fit in **R** using the `{MARSS}` package ]
+
+### .green-text[ I estimated 90% confidence intervals on bias terms ]
+
+
+---
+
+class: inverse, center, middle
+
+# RESULTS
+
+
+---
+
+# Bias in trends
+
+### .blue-text[ 35/61 core areas had a negative trend ]
+
+### .blue-text[ But only 3/61 were "signficantly" negative ]
+
+
+---
+
+class: frimg, center
+background-image: url(figs/kootenai.png)
+background-position: 40% 70%
+background-size: 80%
+
+# Example of a significant decline
+
+
+---
+
+class: frimg, center
+background-image: url(figs/stillaguamish.png)
+background-position: 40% 70%
+background-size: 80%
+
+# Example of a significant decline
+
+
+---
+
+# Bias in trends
+
+### .blue-text[ 35/61 core areas had a negative trend ]
+
+### .blue-text[ But only 3/61 were "signficantly" negative ]
+
+<br>
+
+### .green-text[ 26/61 core areas had a positive trend ]
+
+### .green-text[ But only 6/61 were "signficantly" positive ]
+
+
+---
+
+class: frimg, center
+background-image: url(figs/lower_deschutes.png)
+background-position: 40% 70%
+background-size: 80%
+
+# Example of a significant increase
+
+
+---
+
+class: frimg, center
+background-image: url(figs/upper_whitefish.png)
+background-position: 40% 70%
+background-size: 80%
+
+# Example of a significant increase
+
+
+---
+
+class: frimg, center
+background-image: url(figs/skokomish.png)
+background-position: 40% 70%
+background-size: 80%
+
+# Example of no systematic trend
+
+
+---
+
+class: inverse, center, middle
+
+# Data quality influences our ability to estimate biases
+
+---
+
+class: frimg, center
+background-image: url(figs/big_salmon.png)
+background-position: 40% 70%
+background-size: 80%
+
+# Example of a data-poor core area
+
+
+---
+
+class: frimg, center
+background-image: url(figs/flathead.png)
+background-position: 40% 70%
+background-size: 80%
+
+# Example of a data-rich core area
+
+
+---
+
+# In summary
+
+.blue-text[
+### We found minimal evidence of systematic biases in estimated trends
+]
+
+.orange-text[
+### ~5% of core areas were declining signficantly
+]
+
+.green-text[
+### ~10% of core areas were increasing signficantly
+]
+
+.futnote.purple-text[`r icon_style(fontawesome("envelope"), fill = "#844870")` scheuerl@uw.edu]
+
+.citation.blue-text[`r icon_style(fontawesome("twitter"), fill = "#488fdf")` @mark_scheuerell]
+
+---
+
+# Next steps
+
+.blue-text[
+### Complete a similar analysis with juvenile data
+]
+
+.blue-text[
+### Use fitted models to project trends into the future
+]
+
+.futnote.purple-text[`r icon_style(fontawesome("envelope"), fill = "#844870")` scheuerl@uw.edu]
+
+.citation.blue-text[`r icon_style(fontawesome("twitter"), fill = "#488fdf")` @mark_scheuerell]
+
+---
+
+# Open science
+
+### .blue-text[https://github.com/mdscheuerell/tengu]
+
+### .blue-text[https://github.com/mdscheuerell/bulltrout]
+
+<br>
+
+# Image sources
+
+.blue-text[
+Carnival: *Frank Kovalchek (2010)*   
+Robin Hood: *John Escott*  
+]
+
+.futnote.purple-text[`r icon_style(fontawesome("envelope"), fill = "#844870")` scheuerl@uw.edu]
+
+.citation.blue-text[`r icon_style(fontawesome("twitter"), fill = "#488fdf")` @mark_scheuerell]
+
