@@ -23,223 +23,10 @@ _U.S. Geological Survey<br>Washington Cooperative Fish and Wildlife Research Uni
 
 .citation.blue-text[`r icon_style(fontawesome("twitter"), fill = "#488fdf")` @mark_scheuerell]
 
----
-
-class: inverse, center, middle
-
-# The Tengu Derby
 
 ---
 
-# Collaborators
-
-.pull-left[
-
-### .blue-text[ Tom Quinn (SAFS) ]
-
-### .blue-text[ James Losee (WDFW) ]
-
-]
-
----
-
-# Background info from TQ
-
-
----
-
-class: frimg, center
-background-image: url(figs/tengu_map.png)
-background-position: 50% 50%
-background-size: 70%
-
----
-
-# Questions
-
-.blue-text[
-## Has size changed systematically over the past 7 decades?
-
-## Do any changes mirror patterns in size or abundance of Puget Sound Chinook salmon as a whole?
-]
-
----
-
-# Three metrics of fish size
-
-.blue-text[
-## 1) The weight of each of the top five Chinook salmon*
-
-## 2) The number of fish over 10 pounds
-
-## 3) The number of fish over 5 pounds 
-]
-
-.citation[*In _most_ years]
-
----
-
-# Three metrics of fish size
-
-.blue-text[
-## 1) The weight of each of the top five Chinook salmon
-]
-
-gray-text[
-## 2) The number over 10 pounds
-
-## 3) The number over 5 pounds 
-]
-
----
-
-# Possible state models
-
-## Random walk
-
-$\Large{x_t = x_{t-1} + w_t}$
-
-## Biased random walk
-
-$\Large{x_t = x_{t-1} + u + w_t}$
-
-<br>
-
-where $x_t = \text{logit}(p_t)$ 
-
----
-
-# Observation model
-
-.red-text[
-### Imperfect sampling means we are unsure of the true size
-]
-
-$\Large{y_t = x_t + v_t}$
-
-
----
-
-class: middle, center, inverse
-
-# Comparison of derby & WDFW size data
-
----
-
-# Three metrics of fish size
-
-.blue-text[
-## 1) The weight of each of the top five Chinook salmon*
-
-## 2) The number over 10 pounds
-
-## 3) The number over 5 pounds 
-]
-
-.citation[*In _most_ years]
-
----
-
-# Three metrics of fish size
-
-.blue-text[
-## 1) The mean weight of the _top two_ Chinook salmon
-]
-
-.gray-text[
-## 2) The number over 10 pounds
-
-## 3) The number over 5 pounds 
-]
-
----
-
-# Time series of size
-
-
-
----
-
-# Model forms
-
-.blue-text[
-## One common state
-]
-
-$$\begin{bmatrix} y_\text{Tengu} \\ y_\text{WDFW} \end{bmatrix}_t = \begin{bmatrix} 1 \\ 1 \end{bmatrix}
-x_t + \begin{bmatrix} a_\text{Tengu} \\ a_\text{WDFW} \end{bmatrix} + \begin{bmatrix} v_\text{Tengu} \\
-v_\text{WDFW} \end{bmatrix}_t$$
-
-$$x_t = x_{t-1} + u + w_t$$
-
-.blue-text[
-## Two unique states
-]
-
-$$\begin{bmatrix} y_\text{Tengu} \\ y_\text{WDFW} \end{bmatrix}_t = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
-\begin{bmatrix} x_\text{Tengu} \\ x_\text{WDFW} \end{bmatrix}_t + \begin{bmatrix} a_\text{Tengu} \\ a_\text{WDFW} \end{bmatrix} + \begin{bmatrix} v_\text{Tengu} \\ v_\text{WDFW} \end{bmatrix}_t$$
-
-$$\begin{bmatrix} x_\text{Tengu} \\ x_\text{WDFW} \end{bmatrix}_t = \begin{bmatrix} x_\text{Tengu} \\ x_\text{WDFW} \end{bmatrix}_{t-1} + \begin{bmatrix} u_\text{Tengu} \\ u_\text{WDFW} \end{bmatrix} + \begin{bmatrix} w_\text{Tengu} \\ w_\text{WDFW} \end{bmatrix}_t$$
-
----
-
-class: middle, center
-
-# The data support .green-text[two unique states] with a .green-text[common decline] of ~0.4% per year
-
----
-
-# Model fits and data
-
----
-
-# Conclusions
-
-.green-text[
-## Tengu anglers and WDFW assessments seem to be sampling different groups of fish
-
-## Both data sources showed evidence for declining abundance and size over time
-
-## The Tengu data are an amazing source of information
-]
-
----
-
-class: inverse, center, middle
-
-# Conterminous bull trout in the western US
-
----
-
-# Bull trout assessment team
-
-.pull-left[
-
-### .green-text[ Brett Bowersox (IDFG) ]
-
-### .green-text[ Dan Brewer (USFWS) ]
-
-### .blue-text[ Erin Britton-Kuttel (USFWS) ]
-
-### .blue-text[ Sean Finn (USFWS) ]
-
-### .green-text[ Stephanie Gunckel (ODFW) ]
-
-]
-
-.pull-right[
-
-### .blue-text[ Craig Hansen (USFWS) ]
-
-### .blue-text[ Rebecca Migala (USFWS) ]
-
-### .blue-text[ Dan Nolfi (USFWS) ]
-
-### .green-text[ Marie Winkowski (WDFW) ]
-
-### .blue-text[ Alan Yanahan (USFWS) ]
-
-]
+# Background on ESA
 
 
 ---
@@ -468,6 +255,245 @@ background-size: 40%
 # Advantages
 
 ## 4. .gray-text[Data-poor] benefit from .green-text[data-rich]
+
+
+---
+
+class: inverse, center, middle
+
+# The Tengu Derby
+
+---
+
+# Collaborators
+
+.pull-left[
+
+## .blue-text[ Tom Quinn (SAFS) ]
+
+## .blue-text[ James Losee (WDFW) ]
+
+]
+
+---
+
+# Derby background info from TQ
+
+
+---
+
+class: frimg, left, bottom, inverse
+background-image: url(figs/camp_harmony.jpg)
+background-position: 50% 50%
+background-size: cover
+
+# Camp Harmony in 1942
+
+
+---
+
+# What are blackmouth?
+
+
+---
+
+class: frimg, right, bottom
+background-image: url(figs/tengu_map.png)
+background-position: 40% 50%
+background-size: 70%
+
+# Derby location
+
+
+---
+
+# Questions
+
+.blue-text[
+## Has size changed systematically over the past 7 decades?
+
+## Do changes in size mirror patterns of Puget Sound Chinook salmon as a whole?
+]
+
+---
+
+# Three metrics of fish size
+
+.blue-text[
+## 1) The weight of each of the top five Chinook salmon*
+
+## 2) The number of fish over 10 pounds
+
+## 3) The number of fish over 5 pounds 
+]
+
+.citation[*In _most_ years]
+
+---
+
+# Three metrics of fish size
+
+.blue-text[
+## 1) The weight of each of the top five Chinook salmon
+]
+
+.gray-text[
+## 2) The number over 10 pounds
+
+## 3) The number over 5 pounds 
+]
+
+---
+
+class: frimg, center
+background-image: url(figs/tengu_fish_size.png)
+background-position: 45% 65%
+background-size: 85%
+
+# Mean mass of 5 largest fish
+
+---
+
+class: frimg, center
+background-image: url(figs/tengu_fish_size.png)
+background-position: 45% 65%
+background-size: 85%
+
+# Mean mass of 5 largest fish
+
+
+---
+
+# Possible state models
+
+## Random walk
+
+$\Large{x_t = x_{t-1} + w_t}$
+
+## Biased random walk
+
+$\Large{x_t = x_{t-1} + u + w_t}$
+
+<br>
+
+where $x_t = \text{logit}(p_t)$ 
+
+---
+
+# Observation model
+
+.red-text[
+### Imperfect sampling means we are unsure of the true size
+]
+
+$\Large{y_t = x_t + v_t}$
+
+
+---
+
+class: frimg, center
+background-image: url(figs/tengu_size_fit.png)
+background-position: 45% 65%
+background-size: 85%
+
+# Estimated true size
+
+
+---
+
+class: middle, center, inverse
+
+# Comparison of derby & WDFW size data
+
+
+---
+
+# Time series of size
+
+
+
+---
+
+# Model forms
+
+.blue-text[
+## One common state
+]
+
+$$\begin{bmatrix} y_\text{Tengu} \\ y_\text{WDFW} \end{bmatrix}_t = \begin{bmatrix} 1 \\ 1 \end{bmatrix}
+x_t + \begin{bmatrix} a_\text{Tengu} \\ a_\text{WDFW} \end{bmatrix} + \begin{bmatrix} v_\text{Tengu} \\
+v_\text{WDFW} \end{bmatrix}_t$$
+
+$$x_t = x_{t-1} + u + w_t$$
+
+.blue-text[
+## Two unique states
+]
+
+$$\begin{bmatrix} y_\text{Tengu} \\ y_\text{WDFW} \end{bmatrix}_t = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
+\begin{bmatrix} x_\text{Tengu} \\ x_\text{WDFW} \end{bmatrix}_t + \begin{bmatrix} a_\text{Tengu} \\ a_\text{WDFW} \end{bmatrix} + \begin{bmatrix} v_\text{Tengu} \\ v_\text{WDFW} \end{bmatrix}_t$$
+
+$$\begin{bmatrix} x_\text{Tengu} \\ x_\text{WDFW} \end{bmatrix}_t = \begin{bmatrix} x_\text{Tengu} \\ x_\text{WDFW} \end{bmatrix}_{t-1} + \begin{bmatrix} u_\text{Tengu} \\ u_\text{WDFW} \end{bmatrix} + \begin{bmatrix} w_\text{Tengu} \\ w_\text{WDFW} \end{bmatrix}_t$$
+
+---
+
+class: middle, center
+
+# The data support .green-text[two unique states] with a .green-text[common decline] of ~0.4% per year
+
+---
+
+# Model fits and data
+
+---
+
+# Conclusions
+
+.green-text[
+## Tengu anglers and WDFW assessments seem to be sampling different groups of fish
+
+## Both data sources showed evidence for declining abundance and size over time
+
+## The Tengu data are an amazing source of information
+]
+
+---
+
+class: inverse, center, middle
+
+# Conterminous bull trout in the western US
+
+---
+
+# Bull trout assessment team
+
+.pull-left[
+
+### .green-text[ Brett Bowersox (IDFG) ]
+
+### .green-text[ Dan Brewer (USFWS) ]
+
+### .blue-text[ Erin Britton-Kuttel (USFWS) ]
+
+### .blue-text[ Sean Finn (USFWS) ]
+
+### .green-text[ Stephanie Gunckel (ODFW) ]
+
+]
+
+.pull-right[
+
+### .blue-text[ Craig Hansen (USFWS) ]
+
+### .blue-text[ Rebecca Migala (USFWS) ]
+
+### .blue-text[ Dan Nolfi (USFWS) ]
+
+### .green-text[ Marie Winkowski (WDFW) ]
+
+### .blue-text[ Alan Yanahan (USFWS) ]
+
+]
 
 
 ---
@@ -1038,6 +1064,7 @@ background-size: 80%
 # Image sources
 
 .blue-text[
+Camp Hamrony: *MOHAI*
 Carnival: *Frank Kovalchek (2010)*   
 Robin Hood: *John Escott*  
 ]
