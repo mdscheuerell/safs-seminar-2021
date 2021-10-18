@@ -349,9 +349,9 @@ background-size: 70%
 # Questions
 
 .blue-text[
-## Has size changed systematically over the past 70 years?
+## Has fish mass changed systematically over the past 70 years?
 
-## Do changes in size mirror patterns of Puget Sound Chinook salmon as a whole?
+## Do changes in mass mirror patterns of Puget Sound Chinook salmon as a whole?
 ]
 
 ---
@@ -391,41 +391,35 @@ background-size: 85%
 
 # Mean mass of 5 largest fish
 
----
-
-class: frimg, center
-background-image: url(figs/tengu_fish_size.png)
-background-position: 45% 65%
-background-size: 85%
-
-# Mean mass of 5 largest fish
-
 
 ---
 
 # Possible state models
 
+.blue-text[
 ## Random walk
+]
 
 $\Large{x_t = x_{t-1} + w_t}$
 
+.green-text[
 ## Biased random walk
+]
 
 $\Large{x_t = x_{t-1} + u + w_t}$
 
 <br>
 
-where $x_t = \text{logit}(p_t)$ 
+where $x_t = \log(mass_t)$ 
+
 
 ---
 
 # Observation model
 
-.red-text[
 ### Imperfect sampling means we are unsure of the true size
-]
 
-$\Large{y_t = x_t + v_t}$
+## .purple-text[Observed size] = .blue-text[true size] + .red-text[error]
 
 
 ---
@@ -447,13 +441,22 @@ class: middle, center, inverse
 
 ---
 
+class: frimg, bottom, right, inverse
+background-image: url(figs/purse_seiner.jpg)
+background-position: 50% 50%
+background-size: 90%
+
+Photo: J Borrow
+
+
+---
+
 class: frimg, center
 background-image: url(figs/ts_plot_both_sizes.png)
 background-position: 35% 65%
 background-size: 90%
 
-# Sizes of fish from derby & surveys
-
+# Sizes from derby & purse seine fishery
 
 
 ---
@@ -464,20 +467,31 @@ background-size: 90%
 ## One common state
 ]
 
-$$\begin{bmatrix} y_\text{Tengu} \\ y_\text{WDFW} \end{bmatrix}_t = \begin{bmatrix} 1 \\ 1 \end{bmatrix}
-x_t + \begin{bmatrix} a_\text{Tengu} \\ a_\text{WDFW} \end{bmatrix} + \begin{bmatrix} v_\text{Tengu} \\
-v_\text{WDFW} \end{bmatrix}_t$$
+$x_t = x_{t-1} + u + w_t$
 
-$$x_t = x_{t-1} + u + w_t$$
-
-.blue-text[
+.green-text[
 ## Two unique states
 ]
 
-$$\begin{bmatrix} y_\text{Tengu} \\ y_\text{WDFW} \end{bmatrix}_t = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
-\begin{bmatrix} x_\text{Tengu} \\ x_\text{WDFW} \end{bmatrix}_t + \begin{bmatrix} a_\text{Tengu} \\ a_\text{WDFW} \end{bmatrix} + \begin{bmatrix} v_\text{Tengu} \\ v_\text{WDFW} \end{bmatrix}_t$$
+$\begin{bmatrix} x_\text{Tengu} \\ x_\text{WDFW} \end{bmatrix}_t = \begin{bmatrix} x_\text{Tengu} \\ x_\text{WDFW} \end{bmatrix}_{t-1} + \begin{bmatrix} u_\text{Tengu} \\ u_\text{WDFW} \end{bmatrix} + \begin{bmatrix} w_\text{Tengu} \\ w_\text{WDFW} \end{bmatrix}_t$
 
-$$\begin{bmatrix} x_\text{Tengu} \\ x_\text{WDFW} \end{bmatrix}_t = \begin{bmatrix} x_\text{Tengu} \\ x_\text{WDFW} \end{bmatrix}_{t-1} + \begin{bmatrix} u_\text{Tengu} \\ u_\text{WDFW} \end{bmatrix} + \begin{bmatrix} w_\text{Tengu} \\ w_\text{WDFW} \end{bmatrix}_t$$
+
+---
+
+# Model forms
+
+.blue-text[
+## One common state
+]
+
+$x_t = x_{t-1} + u + w_t$
+
+.green-text[
+## Two unique states
+]
+
+$\begin{bmatrix} x_\text{Tengu} \\ x_\text{WDFW} \end{bmatrix}_t = \begin{bmatrix} x_\text{Tengu} \\ x_\text{WDFW} \end{bmatrix}_{t-1} + \begin{bmatrix} u \\ u \end{bmatrix} + \begin{bmatrix} w_\text{Tengu} \\ w_\text{WDFW} \end{bmatrix}_t$
+
 
 ---
 
@@ -496,14 +510,12 @@ background-size: 90%
 
 ---
 
-# Conclusions
+# Summary
 
 .green-text[
 ## Tengu anglers and WDFW assessments seem to be sampling different groups of fish
 
-## Both data sources showed evidence for declining abundance and size over time
-
-## The Tengu data are an amazing source of information
+## Both data sources showed evidence for declining abundance and size over the past 40 years
 ]
 
 ---
@@ -908,7 +920,7 @@ $$\begin{bmatrix}
 
 ---
 
-# Example of 3 observations of a state
+# Example of 3 observations of a common state
 
 ```{r multi_obs, fig.dim = c(6,4), fig.align = 'center'}
 y2 <- x1 + rnorm(30, 0, 0.4)
@@ -1108,14 +1120,14 @@ background-size: 80%
 
 ### .blue-text[https://github.com/mdscheuerell/bulltrout]
 
-<br>
-
 # Image sources
 
 .blue-text[
-Camp Hamrony: *MOHAI*
-Carnival: *Frank Kovalchek (2010)*   
+Carnival: *Frank Kovalchek*   
 Robin Hood: *John Escott*  
+Camp Harmony: *MOHAI*  
+Tengu derby: *Tom Quinn*  
+Purse seiner: *Jim Borrow*  
 ]
 
 .futnote.purple-text[`r icon_style(fontawesome("envelope"), fill = "#844870")` scheuerl@uw.edu]
