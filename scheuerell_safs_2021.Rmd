@@ -566,34 +566,16 @@ class: inverse, center, middle
 
 ---
 
-# Population dynamics
+# Simple model of population dynamics
 
 ### .blue-text[Exponential growth/decline in continuous time]
 
-$$N(t) = N_0 \exp(u) \exp(w t)$$
+$$N(t) = N_0 ~ \underbrace{\exp(u)}_{\substack{\text{growth} \\ \text{rate}}} \underbrace{\exp(w t)}_{\substack{\text{stochastic} \\ \text{environment}}}$$
 
 
 ---
 
-# Population dynamics
-
-### .blue-text[Exponential growth/decline in continuous time]
-
-$$N(t) = N_0 ~ \underbrace{\exp(u)}_{\substack{\text{growth} \\ \text{rate}}} \exp(w t)$$
-
-
----
-
-# Population dynamics
-
-### .blue-text[Exponential growth/decline in continuous time]
-
-$$N(t) = N_0 \exp(u) \underbrace{\exp(w t)}_{\substack{\text{stochastic} \\ \text{environment}}}$$
-
-
----
-
-# Population dynamics
+# Simple model of population dynamics
 
 ### .blue-text[Exponential growth/decline in continuous time]
 
@@ -605,11 +587,12 @@ $$N(t) = N_0 \exp(u) \exp(w t)$$
 
 $$N_t = N_{t-1} \exp(u + w_t)$$
 
+
 ---
 
-# Population dynamics
+# Simple model of population dynamics
 
-### .blue-text[In discrete time, with a time step of 1 year, the model is]
+### .blue-text[In discrete time, with a time step of 1 year]
 
 $$N_t = N_{t-1} \exp(u + w_t)$$
 
@@ -619,9 +602,10 @@ $$N_t = N_{t-1} \exp(u + w_t)$$
 
 $$\log (N_t) = \log (N_{t-1}) + u + w_t$$
 
+
 ---
 
-# Population dynamics
+# Simple model of population dynamics
 
 ### .blue-text[We can define]
 
@@ -630,6 +614,7 @@ $$x = \log (N)$$
 ### .blue-text[ such that ]
 
 $$\log (N_t) = \log (N_{t-1}) + u + w_t \\ \Downarrow \\ x_t = x_{t-1} + u + w_t$$
+
 
 ---
 
@@ -643,7 +628,7 @@ $$w_t \sim \text{N}(0, q)$$
 
 $$x_t = x_{t-1} + u + w_t$$
 
-### .blue-text[is a so-called *biased random walk*]
+### .blue-text[is a so-called] *biased random walk*
 
 
 ---
@@ -707,11 +692,11 @@ class: inverse, center, middle
 
 ### .blue-text[ In log-space ]
 
-$$\underbrace{y_t}_{\substack{\text{observed} \\ \text{counts}}} = \underbrace{x_t}_{\substack{\text{true} \\ \text{counts}}} + \underbrace{v_t}_{\substack{\text{observer} \\ \text{error}}}$$
+$\underbrace{y_t}_{\substack{\text{observed} \\ \text{counts}}} = \underbrace{x_t}_{\substack{\text{true} \\ \text{counts}}} + \underbrace{v_t}_{\substack{\text{observer} \\ \text{error}}}$
 
 ### .blue-text[ where ]
 
-$$v_t \sim \text{N}(0, r)$$
+$v_t \sim \text{N}(0, r)$
 
 ---
 
