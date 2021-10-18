@@ -277,22 +277,35 @@ class: inverse, center, middle
 
 ---
 
-# Derby background info from TQ
-
-
----
-
 class: frimg, left, bottom, inverse
 background-image: url(figs/camp_harmony.jpg)
 background-position: 50% 50%
-background-size: cover
+background-size: 100%
 
 # Camp Harmony in 1942
 
 
 ---
 
-# What are blackmouth?
+class: frimg, left, bottom, inverse
+background-image: url(figs/tengu_plaque.jpg)
+background-position: 50% 50%
+background-size: 55%
+
+
+---
+
+background-image: url(figs/blackmouth_head_wdfw.jpg)
+background-position: 50% 82%
+background-size: 35%
+
+# "Blackmouth" Chinook salmon
+
+.blue-text[
+## Resident fish that feed in the Salish Sea year-round until they mature and spawn
+
+## Targeted by anglers in fall and winter
+]
 
 
 ---
@@ -307,10 +320,36 @@ background-size: 70%
 
 ---
 
+# Derby rules
+
+.blue-text[
+## Open on pre-set dates (usually Sundays in the winter)
+
+## Only rod, reel, sinker & herring can be used
+
+## Anglers may motor to fishing areas, but then they must drift & use the classic "mooching" technique
+
+## Anglers fish in the specified area during set hours
+]
+
+
+---
+
+class: frimg, center, bottom
+background-image: url(figs/tengu_weighing.jpg)
+background-position: 50% 40%
+background-size: 70%
+
+.blue-text[
+## Catch is carefully scrutinized and recorded
+]
+
+---
+
 # Questions
 
 .blue-text[
-## Has size changed systematically over the past 7 decades?
+## Has size changed systematically over the past 70 years?
 
 ## Do changes in size mirror patterns of Puget Sound Chinook salmon as a whole?
 ]
