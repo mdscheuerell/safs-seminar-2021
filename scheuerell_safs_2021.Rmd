@@ -714,7 +714,7 @@ class: inverse, center, middle
 
 ---
 
-# Many populations within many core areas
+# The survey data are hierarchical
 
 ### .blue-text[ 4 states ]
 
@@ -754,13 +754,13 @@ $$\begin{gathered}
 
 # Observation model for multiple time series
 
-### .blue-text[ Example with 5 popns (1-5) and 2 core areas (A & B) ]
+### .blue-text[ Example with 5 popns (1-5) from 2 core areas (A & B) ]
 
 $$\begin{gathered}
     y_{1,t} = x_{A} + v_{1,t} \\
     y_{2,t} = x_{A} + v_{2,t} \\
-    y_{5,t} = x_{B} + v_{3,t} \\
-    y_{5,t} = x_{B} + v_{4,t} \\
+    y_{3,t} = x_{B} + v_{3,t} \\
+    y_{4,t} = x_{B} + v_{4,t} \\
     y_{5,t} = x_{B} + v_{5,t}
   \end{gathered}$$
 
@@ -788,7 +788,7 @@ lines(y3, col = clr[3], lwd = 2)
 
 ---
 
-# Different survey methods have different observation errors
+# Different survey methods have different levels of observation errors
 
 ### .blue-text[ For example, weir counts are more accurate than snorkel surveys ]
 
