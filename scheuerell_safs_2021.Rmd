@@ -570,18 +570,12 @@ class: inverse, center, middle
 
 ### .blue-text[Exponential growth/decline in continuous time]
 
-$$N(t) = N_0 ~ \underbrace{\exp(u)}_{\substack{\text{growth} \\ \text{rate}}} \underbrace{\exp(w t)}_{\substack{\text{stochastic} \\ \text{environment}}}$$
+$$N(t) = N_0 ~ \underbrace{\exp(u)}_{\substack{\text{rate of} \\ \text{change}}} \underbrace{\exp(w t)}_{\substack{\text{stochastic} \\ \text{environment}}}$$
 
 
 ---
 
 # Simple model of population dynamics
-
-### .blue-text[Exponential growth/decline in continuous time]
-
-$$N(t) = N_0 \exp(u) \exp(w t)$$
-
-<br>
 
 ### .blue-text[In discrete time, with a time step of 1 year]
 
@@ -596,24 +590,13 @@ $$N_t = N_{t-1} \exp(u + w_t)$$
 
 $$N_t = N_{t-1} \exp(u + w_t)$$
 
-<br>
-
-### .blue-text[Taking the logarithm of both sides yields]
+### .blue-text[and on a log scale]
 
 $$\log (N_t) = \log (N_{t-1}) + u + w_t$$
 
+### .blue-text[which we can rewrite as]
 
----
-
-# Simple model of population dynamics
-
-### .blue-text[We can define]
-
-$$x = \log (N)$$
-
-### .blue-text[ such that ]
-
-$$\log (N_t) = \log (N_{t-1}) + u + w_t \\ \Downarrow \\ x_t = x_{t-1} + u + w_t$$
+$$x_t = x_{t-1} + u + w_t$$
 
 
 ---
@@ -662,16 +645,18 @@ clr2 <- c("#fff5f0",
           "#a50f15",
           "#67000d")
 
-par(mfrow = c(1,2), mai = c(1, 1, 1, 0))
+par(mfrow = c(1,2), mai = c(1, 1, 0.75, 0))
 plot.ts(x1, las = 1, col = "dodgerblue", lwd = 2, ylim = c(8, 16),
-        ylab = expression(italic(x[t])), main = "Positive bias")
+        ylab = expression(italic(x[t])), main = "")
+mtext("Positive bias", side = 3, line = 1, cex = 2)
 for(i in 1:9) {
   lines(cumsum(rnorm(30, 0.1, 0.3)) + 10,
         col = clr1[i], lwd = 2)
 }
 
 plot.ts(x2, las = 1, col = "indianred", lwd = 2,  ylim = c(4, 12),
-        ylab = expression(italic(x[t])), main = "Negative bias")
+        ylab = expression(italic(x[t])), main = "")
+mtext("Negative bias", side = 3, line = 1, cex = 2)
 for(i in 1:9) {
   lines(cumsum(rnorm(30, -0.1, 0.3)) + 10,
         col = clr2[i], lwd = 2)
@@ -700,20 +685,22 @@ $v_t \sim \text{N}(0, r)$
 
 ---
 
-# Examples with observation error
+# Example: biased RW's with observation error
 
 ```{r ex_biased_rw_y, fig.dim = c(8,5), fig.align = 'center'}
 y1 <- x1 + rnorm(30, 0, 0.2)
 
 y2 <- x2 + rnorm(30, 0, 0.2)
 
-par(mfrow = c(1,2), mai = c(1, 1, 1, 0))
+par(mfrow = c(1,2), mai = c(1, 1, 0.75, 0))
 plot.ts(x1, las = 1, col = "gray", lwd = 2, ylim = range(x1, y1),
-        ylab = expression(italic(x[t])), main = "Positive bias")
+        ylab = expression(italic(x[t])), main = "")
+mtext("Positive bias", side = 3, line = 1, cex = 2)
 lines(y1, col = "dodgerblue", lwd = 2)
 
 plot.ts(x2, las = 1, col = "gray", lwd = 2, ylim = range(x2, y2),
-        ylab = expression(italic(x[t])), main = "Negative bias")
+        ylab = expression(italic(x[t])), main = "")
+mtext("Negative bias", side = 3, line = 1, cex = 2)
 lines(y2, col = "indianred", lwd = 2)
 ```
 
@@ -744,6 +731,8 @@ class: inverse, center, middle
 
 ### .blue-text[ We're estimating population trends at the level of *core areas* ]
 
+### .blue-text[ Each core area gets its own model ]
+
 $$\begin{gathered}
     x_{1,t} = x_{1,t-1} + u_1 + w_{1,t} \\
     x_{2,t} = x_{2,t-1} + u_2 + w_{2,t} \\
@@ -754,39 +743,11 @@ $$\begin{gathered}
 
 ---
 
-# Expanding our model for multiple core areas
-
-### .blue-text[ In matrix notation we have ]
-
-$$\begin{bmatrix}
-    x_1 \\
-    x_2 \\
-    \vdots \\
-    x_n \end{bmatrix}_t = 
- \begin{bmatrix}
-    x_1 \\
-    x_2 \\
-    \vdots \\
-    x_n \end{bmatrix}_{t-1} + 
- \begin{bmatrix}
-    u_1 \\
-    u_2 \\
-    \vdots \\
-    u_n \end{bmatrix} + 
- \begin{bmatrix}
-    w_{1} \\
-    w_{2} \\
-    \vdots \\
-    w_{n} \end{bmatrix}_t$$
-    
-
----
-
 # Observation model for multiple time series
 
-### .blue-text[ Core areas have from 1-22 populations within them ]
+### .blue-text[ Core areas have 1-22 populations within them ]
 
-### .blue-text[ We need a way to map populations to their respective core area ]
+### .blue-text[ Each population is an observation from its respective core area ]
 
 
 ---
@@ -795,117 +756,18 @@ $$\begin{bmatrix}
 
 ### .blue-text[ Example with 5 popns (1-5) and 2 core areas (A & B) ]
 
-$$\begin{bmatrix}
-    y_{1} \\
-    y_{2} \\
-    y_{3} \\
-    y_{4} \\
-    y_{5} \end{bmatrix}_t = 
- \begin{bmatrix}
-    x_{A} \\
-    x_{A} \\
-    x_{B} \\
-    x_{B} \\
-    x_{B} \end{bmatrix}_t + 
- \begin{bmatrix}
-    a_1 \\
-    a_2 \\
-    a_3 \\
-    a_4 \\
-    a_5 \end{bmatrix} + 
- \begin{bmatrix}
-    v_{1} \\
-    v_{2} \\
-    v_{3} \\
-    v_{4} \\
-    v_{5} \end{bmatrix}_t$$
-    
-
----
-
-# Full state-space form
-
-### .blue-text[ Mapping populations onto core areas ]
-
-$$\begin{bmatrix}
-    y_{1} \\
-    y_{2} \\
-    y_{3} \\
-    y_{4} \\
-    y_{5} \end{bmatrix}_t = 
-\underbrace{\begin{bmatrix}
-    1 & 0 \\
-    1 & 0 \\
-    0 & 1 \\
-    0 & 1 \\
-    0 & 1 \end{bmatrix}}_{\substack{\text{rows are popns} \\ \text{cols are cores}}}  
- \begin{bmatrix}
-    x_{A} \\
-    x_{B} \end{bmatrix}_t +
- \begin{bmatrix}
-    a_1 \\
-    a_2 \\
-    a_3 \\
-    a_4 \\
-    a_5 \end{bmatrix} + 
- \begin{bmatrix}
-    v_{1} \\
-    v_{2} \\
-    v_{3} \\
-    v_{4} \\
-    v_{5} \end{bmatrix}_t$$
+$$\begin{gathered}
+    y_{1,t} = x_{A} + v_{1,t} \\
+    y_{2,t} = x_{A} + v_{2,t} \\
+    y_{5,t} = x_{B} + v_{3,t} \\
+    y_{5,t} = x_{B} + v_{4,t} \\
+    y_{5,t} = x_{B} + v_{5,t}
+  \end{gathered}$$
 
 
 ---
 
-# Full state-space form
-
-### .blue-text[ Combining the observation & state models ]
-
-$$\begin{bmatrix}
-    y_{1} \\
-    y_{2} \\
-    y_{3} \\
-    y_{4} \\
-    y_{5} \end{bmatrix}_t = 
-\begin{bmatrix}
-    1 & 0 \\
-    1 & 0 \\
-    0 & 1 \\
-    0 & 1 \\
-    0 & 1 \end{bmatrix}  
- \begin{bmatrix}
-    x_{A} \\
-    x_{B} \end{bmatrix}_t +
- \begin{bmatrix}
-    a_1 \\
-    a_2 \\
-    a_3 \\
-    a_4 \\
-    a_5 \end{bmatrix} + 
- \begin{bmatrix}
-    v_{1} \\
-    v_{2} \\
-    v_{3} \\
-    v_{4} \\
-    v_{5} \end{bmatrix}_t \\[50pt]
-    \begin{bmatrix}
-    x_{A} \\
-    x_{B} \end{bmatrix}_t = 
- \begin{bmatrix}
-    x_{A} \\
-    x_{B} \end{bmatrix}_{t-1} + 
- \begin{bmatrix}
-    u_A \\
-    u_B \end{bmatrix} + 
- \begin{bmatrix}
-    w_A \\
-    w_B \end{bmatrix}_t$$
-
-
----
-
-# Example of 3 observations of a common state
+# Example: 3 observations of a common state
 
 ```{r multi_obs, fig.dim = c(6,4), fig.align = 'center'}
 y2 <- x1 + rnorm(30, 0, 0.4)
@@ -926,7 +788,7 @@ lines(y3, col = clr[3], lwd = 2)
 
 ---
 
-# Different survey methods have different observation variances
+# Different survey methods have different observation errors
 
 ### .blue-text[ For example, weir counts are more accurate than snorkel surveys ]
 
