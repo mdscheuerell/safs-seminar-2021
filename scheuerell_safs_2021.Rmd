@@ -55,6 +55,8 @@ class: middle
 
 ---
 
+<br>
+
 # ESA is administered by two federal agencies
 
 .pull-left-img[![](figs/usfws_logo.svg)]
@@ -66,23 +68,31 @@ class: middle
 
 # Key provisions of the ESA
 
-### Determine whether species are .red-text[threatened] or .red-text[endangered] (&sect; 4)
+.blue-text[
+### Determine whether species are threatened or endangered (&sect; 4)
+]
 
+.purple-text[
 ### Agencies will use their authorities to conserve listed species (&sect; 7)
+]
 
+.purple-text[
 ### Agencies cannot jeopardize listed species' existence or destroy critical habitat (&sect; 7)
+]
 
+.red-text[
 ### It's illegal to kill, harm or harass ("take") a listed species (&sect; 9)
-
+]
 
 ---
 
 # ESA status reviews
 
 .blue-text[
-## Required every 5 years to ensure that listed species have appropriate protections
+### Required every 5 years to ensure that listed species have appropriate protections
 
-## Information considered includes 
+### Considerations include
+]
 
 * ### population trends, distribution, demographics & genetics
 
@@ -92,23 +102,25 @@ class: middle
 
 * ### status & trends of threats
 
-]
-
 
 ---
 
-# Outcomes of status reviews
+# 4 possible outcomes of ESA status reviews
+
+.red-text[
+### 1. reclassified from threatened to endangered (uplist)
+]
 
 .blue-text[
-## Recommend whether a listed species should be
+### 2. maintained at current classification
+]
 
-1. ### reclassified from threatened to endangered (uplist)
+.green-text[
+### 3. reclassified from endangered to threatened (downlist)
+]
 
-2. ### reclassified from endangered to threatened (downlist)
-
-3. ### removed from the list (delist)
-
-4. ### maintained at current classification
+.green-text[
+### 4. removed from the list (delist)
 ]
 
 
