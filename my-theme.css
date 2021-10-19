@@ -157,11 +157,16 @@ a, a > code {
 .pull-left-img {
   float: left;
   width: 35%;
-  padding-left: 5em;
+  padding-left: 2em;
 }
 .pull-right {
   float: right;
   width: 47%;
+}
+.pull-right-img {
+  float: right;
+  width: 35%;
+  padding-right: 2em;
 }
 .pull-right ~ * {
   clear: both;
