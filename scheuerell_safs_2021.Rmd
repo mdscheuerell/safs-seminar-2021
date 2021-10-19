@@ -522,7 +522,7 @@ background-size: 90%
 
 class: inverse, center, middle
 
-# Conterminous bull trout in the western US
+# Bull trout in the Pacific Northwest
 
 ---
 
@@ -556,6 +556,25 @@ class: inverse, center, middle
 
 ]
 
+
+---
+
+class: frimg
+background-image: url(figs/bull_trout_art.png)
+background-position: 50% 90%
+background-size: 60%
+
+# Bull trout
+
+.green-text[
+### Native to the Pacific Northwest & Canada
+
+### 4 different life histories (resident, riverine, lacustrine, anadromous)
+
+### Mature at 4-7 years of age
+
+### Listed as threatened under ESA in 1999
+]
 
 ---
 
