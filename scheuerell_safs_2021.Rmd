@@ -26,7 +26,82 @@ _U.S. Geological Survey<br>Washington Cooperative Fish and Wildlife Research Uni
 
 ---
 
-# Background on ESA
+class: middle
+
+# Endangered Species Act of 1973
+
+> ## The purpose of the ESA is to protect and recover imperiled species and the ecosystems upon which they depend.
+
+
+---
+
+class: middle
+
+# In 1978 the US Supreme Court ruled that
+
+> ## The plain intent of Congress in enacting [the ESA] was to halt and reverse the trend toward species extinction, whatever the cost.
+
+
+---
+
+# ESA is administered by two federal agencies
+
+.green-text[
+## Fish and Wildlife Service (FWS)
+]
+.blue-text[
+## National Marine Fisheries Service (NMFS)
+]
+
+
+---
+
+# Key provisions of the ESA
+
+### Determine whether species are .red-text[threatened] or .red-text[endangered] (&sect; 4)
+
+### Agencies will use their authorities to conserve listed species (&sect; 7)
+
+### Agencies cannot jeopardize listed species' existence or destroy critical habitat (&sect; 7)
+
+### It's illegal to kill, harm or harass ("take") a listed species (&sect; 9)
+
+
+---
+
+# ESA status reviews
+
+.blue-text[
+## Required every 5 years to ensure that listed species have appropriate protections
+
+## Information considered includes 
+
+* ### population trends, distribution, demographics & genetics
+
+* ### habitat conditions
+
+* ### past conservation measures that have benefited the species
+
+* ### status & trends of threats
+
+]
+
+
+---
+
+# Outcomes of status reviews
+
+.blue-text[
+## Recommend whether a listed species should be
+
+1. ### reclassified from threatened to endangered (uplist)
+
+2. ### reclassified from endangered to threatened (downlist)
+
+3. ### removed from the list (delist)
+
+4. ### maintained at current classification
+]
 
 
 ---
@@ -263,6 +338,35 @@ class: inverse, center, middle
 
 # Bull trout in the Pacific Northwest
 
+
+---
+
+class: frimg
+background-image: url(figs/bull_trout_art.png)
+background-position: 50% 90%
+background-size: 60%
+
+# Bull trout
+
+.green-text[
+### Native to the Pacific Northwest & Canada
+
+### 4 different life histories (resident, riverine, lacustrine, anadromous)
+
+### Mature at 4-7 years of age
+
+### Listed as threatened under ESA in 1999
+]
+
+
+---
+
+class: frimg, inverse
+background-image: url(figs/bull_trout_range_map.jpg)
+background-position: 50% 50%
+background-size: cover
+
+
 ---
 
 # Bull trout assessment team
@@ -294,34 +398,6 @@ class: inverse, center, middle
 ### .blue-text[ Alan Yanahan (USFWS) ]
 
 ]
-
-
----
-
-class: frimg
-background-image: url(figs/bull_trout_art.png)
-background-position: 50% 90%
-background-size: 60%
-
-# Bull trout
-
-.green-text[
-### Native to the Pacific Northwest & Canada
-
-### 4 different life histories (resident, riverine, lacustrine, anadromous)
-
-### Mature at 4-7 years of age
-
-### Listed as threatened under ESA in 1999
-]
-
-
----
-
-class: frimg, inverse
-background-image: url(figs/bull_trout_range_map.jpg)
-background-position: 50% 50%
-background-size: cover
 
 
 ---
