@@ -261,6 +261,436 @@ background-size: 40%
 
 class: inverse, center, middle
 
+# Bull trout in the Pacific Northwest
+
+---
+
+# Bull trout assessment team
+
+.pull-left[
+
+### .green-text[ Brett Bowersox (IDFG) ]
+
+### .green-text[ Dan Brewer (USFWS) ]
+
+### .blue-text[ Erin Britton-Kuttel (USFWS) ]
+
+### .blue-text[ Sean Finn (USFWS) ]
+
+### .green-text[ Stephanie Gunckel (ODFW) ]
+
+]
+
+.pull-right[
+
+### .blue-text[ Craig Hansen (USFWS) ]
+
+### .blue-text[ Rebecca Migala (USFWS) ]
+
+### .blue-text[ Dan Nolfi (USFWS) ]
+
+### .green-text[ Marie Winkowski (WDFW) ]
+
+### .blue-text[ Alan Yanahan (USFWS) ]
+
+]
+
+
+---
+
+class: frimg
+background-image: url(figs/bull_trout_art.png)
+background-position: 50% 90%
+background-size: 60%
+
+# Bull trout
+
+.green-text[
+### Native to the Pacific Northwest & Canada
+
+### 4 different life histories (resident, riverine, lacustrine, anadromous)
+
+### Mature at 4-7 years of age
+
+### Listed as threatened under ESA in 1999
+]
+
+
+---
+
+class: frimg, inverse
+background-image: url(figs/bull_trout_range_map.jpg)
+background-position: 50% 50%
+background-size: cover
+
+
+---
+
+class: inverse, center, middle
+
+# Model for the state of nature
+
+
+---
+
+# Simple model of population dynamics
+
+### .blue-text[Exponential growth/decline in continuous time]
+
+$$N(t) = N_0 ~ \underbrace{\exp(u)}_{\substack{\text{rate of} \\ \text{change}}} \underbrace{\exp(w t)}_{\substack{\text{stochastic} \\ \text{environment}}}$$
+
+
+---
+
+# Simple model of population dynamics
+
+### .blue-text[In discrete time, with a time step of 1 year]
+
+$$N_t = N_{t-1} \exp(u + w_t)$$
+
+
+---
+
+# Simple model of population dynamics
+
+### .blue-text[In discrete time, with a time step of 1 year]
+
+$$N_t = N_{t-1} \exp(u + w_t)$$
+
+### .blue-text[and on a log scale]
+
+$$\log (N_t) = \log (N_{t-1}) + u + w_t$$
+
+### .blue-text[which we can rewrite as]
+
+$$x_t = x_{t-1} + u + w_t$$
+
+
+---
+
+# Biased random walk
+
+### .blue-text[If we assume that the errors are white noise]
+
+$$w_t \sim \text{N}(0, q)$$
+
+### .blue-text[ then our model of populations dynamics]
+
+$$x_t = x_{t-1} + u + w_t$$
+
+### .blue-text[is a so-called] *biased random walk*
+
+
+---
+
+# Examples of biased random walks
+
+```{r ex_biased_rw, fig.dim = c(8,5), fig.align = 'center'}
+set.seed(123)
+
+x1 <- cumsum(rnorm(30, 0.1, 0.3)) + 10
+
+x2 <- cumsum(rnorm(30, -0.1, 0.3)) + 10
+
+clr1 <- c("#f7fbff",
+          "#deebf7",
+          "#c6dbef",
+          "#9ecae1",
+          "#6baed6",
+          "#4292c6",
+          "#2171b5",
+          "#08519c",
+          "#08306b")
+
+clr2 <- c("#fff5f0",
+          "#fee0d2",
+          "#fcbba1",
+          "#fc9272",
+          "#fb6a4a",
+          "#ef3b2c",
+          "#cb181d",
+          "#a50f15",
+          "#67000d")
+
+par(mfrow = c(1,2), mai = c(1, 1, 0.75, 0))
+plot.ts(x1, las = 1, col = "dodgerblue", lwd = 2, ylim = c(8, 16),
+        ylab = expression(italic(x[t])), main = "")
+mtext("Positive bias", side = 3, line = 1, cex = 2)
+for(i in 1:9) {
+  lines(cumsum(rnorm(30, 0.1, 0.3)) + 10,
+        col = clr1[i], lwd = 2)
+}
+
+plot.ts(x2, las = 1, col = "indianred", lwd = 2,  ylim = c(4, 12),
+        ylab = expression(italic(x[t])), main = "")
+mtext("Negative bias", side = 3, line = 1, cex = 2)
+for(i in 1:9) {
+  lines(cumsum(rnorm(30, -0.1, 0.3)) + 10,
+        col = clr2[i], lwd = 2)
+}
+```
+
+
+---
+
+class: inverse, center, middle
+
+# Observation (data) model
+
+
+---
+
+# Observation model
+
+### .blue-text[ In log-space ]
+
+$$\underbrace{y_t}_{\substack{\text{observed} \\ \text{counts}}} = \underbrace{x_t}_{\substack{\text{true} \\ \text{counts}}} + \underbrace{v_t}_{\substack{\text{observer} \\ \text{error}}} ~~ \text{with} ~~ v_t \sim \text{N}(0, r)$$
+
+
+---
+
+# Example: biased RW's with observation error
+
+```{r ex_biased_rw_y, fig.dim = c(8,5), fig.align = 'center'}
+y1 <- x1 + rnorm(30, 0, 0.2)
+
+y2 <- x2 + rnorm(30, 0, 0.2)
+
+par(mfrow = c(1,2), mai = c(1, 1, 0.75, 0))
+plot.ts(x1, las = 1, col = "gray", lwd = 2, ylim = range(x1, y1),
+        ylab = expression(italic(x[t])), main = "")
+mtext("Positive bias", side = 3, line = 1, cex = 2)
+lines(y1, col = "dodgerblue", lwd = 2)
+
+plot.ts(x2, las = 1, col = "gray", lwd = 2, ylim = range(x2, y2),
+        ylab = expression(italic(x[t])), main = "")
+mtext("Negative bias", side = 3, line = 1, cex = 2)
+lines(y2, col = "indianred", lwd = 2)
+```
+
+
+---
+
+class: inverse, center, middle
+
+# Multiple time series of abundance
+
+
+---
+
+# The survey data are hierarchical
+
+## .blue-text[ 4 states ]
+
+## .purple-text[ 8 recovery units ]
+
+## .orange-text[ 61 core areas ]
+
+## .green-text[ 242 populations ]
+
+
+---
+
+# Expanding our model for multiple core areas
+
+### .blue-text[ We're estimating population trends at the level of *core areas* ]
+
+### .blue-text[ Each core area gets its own model ]
+
+$$\begin{gathered}
+    x_{1,t} = x_{1,t-1} + u_1 + w_{1,t} \\
+    x_{2,t} = x_{2,t-1} + u_2 + w_{2,t} \\
+    \vdots \\
+    x_{n,t} = x_{n,t-1} + u_n + w_{n,t} \\
+  \end{gathered}$$
+
+
+---
+
+# Observation model for multiple time series
+
+### .blue-text[ Core areas have 1-22 populations within them ]
+
+### .blue-text[ Each population is an observation from its respective core area ]
+
+
+---
+
+# Observation model for multiple time series
+
+### .blue-text[ Example with 5 popns (1-5) from 2 core areas (A & B) ]
+
+$$\begin{gathered}
+    y_{1,t} = x_{A} + v_{1,t} \\
+    y_{2,t} = x_{A} + v_{2,t} \\
+    y_{3,t} = x_{B} + v_{3,t} \\
+    y_{4,t} = x_{B} + v_{4,t} \\
+    y_{5,t} = x_{B} + v_{5,t}
+  \end{gathered}$$
+
+
+---
+
+# Example: 3 observations of a common state
+
+```{r multi_obs, fig.dim = c(6,4), fig.align = 'center'}
+y2 <- x1 + rnorm(30, 0, 0.4)
+y3 <- x1 + rnorm(30, 0, 0.5)
+
+## set colormap
+clr <- viridisLite::mako(4, begin = 0.4, end = 0.9)
+
+par(mai = c(1, 1, 0.1, 0.1))
+
+plot.ts(x1, las = 1, col = "gray", lwd = 2, ylim = range(x1, y1, y2, y3),
+        ylab = expression(paste(italic(x[t]), "  or  ", italic(y[t]))), main = "")
+lines(y1, col = clr[1], lwd = 2)
+lines(y2, col = clr[2], lwd = 2)
+lines(y3, col = clr[3], lwd = 2)
+```
+
+
+---
+
+# Different survey methods have different levels of observation errors
+
+### .blue-text[ For example, weir counts are more accurate than snorkel surveys ]
+
+### .blue-text[ Multiple surveys of each type help inform the variance estimates ]
+
+---
+
+# Fitting the models
+
+### .blue-text[ We used the time period from 1991-2020 ]
+
+### .blue-text[ Time series needed at least 10 years of non-missing data ]
+
+
+---
+
+# Fitting the models
+
+### .blue-text[ We used the time period from 1991-2020 ]
+
+### .blue-text[ Time series needed at least 10 years of non-missing data ]
+
+### .green-text[ All models were fit in **R** using the `{MARSS}` package ]
+
+### .green-text[ I estimated 90% confidence intervals on bias terms ]
+
+
+---
+
+class: inverse, center, middle
+
+# RESULTS
+
+
+---
+
+# Bias in trends
+
+### .blue-text[ 35/61 core areas had a negative trend ]
+
+### .center.blue-text[ but only 3/61 were "signficantly" negative ]
+
+
+---
+
+class: frimg, center
+background-image: url(figs/kootenai.png)
+background-position: 40% 70%
+background-size: 80%
+
+# Example of a significant decline
+
+
+---
+
+class: frimg, center
+background-image: url(figs/stillaguamish.png)
+background-position: 40% 70%
+background-size: 80%
+
+# Example of a significant decline
+
+
+---
+
+# Bias in trends
+
+### .blue-text[ 35/61 core areas had a negative trend ]
+
+### .center.blue-text[ but only 3/61 were "signficantly" negative ]
+
+<br>
+
+### .green-text[ 26/61 core areas had a positive trend ]
+
+### .center.green-text[ but only 6/61 were "signficantly" positive ]
+
+
+---
+
+class: frimg, center
+background-image: url(figs/lower_deschutes.png)
+background-position: 40% 70%
+background-size: 80%
+
+# Example of a significant increase
+
+
+---
+
+class: frimg, center
+background-image: url(figs/upper_whitefish.png)
+background-position: 40% 70%
+background-size: 80%
+
+# Example of a significant increase
+
+
+---
+
+class: frimg, center
+background-image: url(figs/skokomish.png)
+background-position: 40% 70%
+background-size: 80%
+
+# Example of no systematic trend
+
+
+---
+
+class: inverse, center, middle
+
+# Data quality influences our ability to estimate biases
+
+---
+
+class: frimg, center
+background-image: url(figs/big_salmon.png)
+background-position: 40% 70%
+background-size: 80%
+
+# Example of a data-poor core area
+
+
+---
+
+class: frimg, center
+background-image: url(figs/flathead.png)
+background-position: 40% 70%
+background-size: 80%
+
+# Example of a data-rich core area
+
+
+---
+
+class: inverse, center, middle
+
 # The Tengu Derby
 
 ---
@@ -517,439 +947,6 @@ background-size: 90%
 
 ## Both data sources showed evidence for declining abundance and size over the past 40 years
 ]
-
----
-
-class: inverse, center, middle
-
-# Bull trout in the Pacific Northwest
-
----
-
-# Bull trout assessment team
-
-.pull-left[
-
-### .green-text[ Brett Bowersox (IDFG) ]
-
-### .green-text[ Dan Brewer (USFWS) ]
-
-### .blue-text[ Erin Britton-Kuttel (USFWS) ]
-
-### .blue-text[ Sean Finn (USFWS) ]
-
-### .green-text[ Stephanie Gunckel (ODFW) ]
-
-]
-
-.pull-right[
-
-### .blue-text[ Craig Hansen (USFWS) ]
-
-### .blue-text[ Rebecca Migala (USFWS) ]
-
-### .blue-text[ Dan Nolfi (USFWS) ]
-
-### .green-text[ Marie Winkowski (WDFW) ]
-
-### .blue-text[ Alan Yanahan (USFWS) ]
-
-]
-
-
----
-
-class: frimg
-background-image: url(figs/bull_trout_art.png)
-background-position: 50% 90%
-background-size: 60%
-
-# Bull trout
-
-.green-text[
-### Native to the Pacific Northwest & Canada
-
-### 4 different life histories (resident, riverine, lacustrine, anadromous)
-
-### Mature at 4-7 years of age
-
-### Listed as threatened under ESA in 1999
-]
-
-
----
-
-class: frimg, inverse
-background-image: url(figs/bull_trout_range_map.jpg)
-background-position: 50% 50%
-background-size: cover
-
-
----
-
-class: inverse, center, middle
-
-# Model for the state of nature
-
-
----
-
-# Simple model of population dynamics
-
-### .blue-text[Exponential growth/decline in continuous time]
-
-$$N(t) = N_0 ~ \underbrace{\exp(u)}_{\substack{\text{rate of} \\ \text{change}}} \underbrace{\exp(w t)}_{\substack{\text{stochastic} \\ \text{environment}}}$$
-
-
----
-
-# Simple model of population dynamics
-
-### .blue-text[In discrete time, with a time step of 1 year]
-
-$$N_t = N_{t-1} \exp(u + w_t)$$
-
-
----
-
-# Simple model of population dynamics
-
-### .blue-text[In discrete time, with a time step of 1 year]
-
-$$N_t = N_{t-1} \exp(u + w_t)$$
-
-### .blue-text[and on a log scale]
-
-$$\log (N_t) = \log (N_{t-1}) + u + w_t$$
-
-### .blue-text[which we can rewrite as]
-
-$$x_t = x_{t-1} + u + w_t$$
-
-
----
-
-# Biased random walk
-
-### .blue-text[If we assume that the errors are white noise]
-
-$$w_t \sim \text{N}(0, q)$$
-
-### .blue-text[ then our model of populations dynamics]
-
-$$x_t = x_{t-1} + u + w_t$$
-
-### .blue-text[is a so-called] *biased random walk*
-
-
----
-
-# Examples of biased random walks
-
-```{r ex_biased_rw, fig.dim = c(8,5), fig.align = 'center'}
-set.seed(123)
-
-x1 <- cumsum(rnorm(30, 0.1, 0.3)) + 10
-
-x2 <- cumsum(rnorm(30, -0.1, 0.3)) + 10
-
-clr1 <- c("#f7fbff",
-          "#deebf7",
-          "#c6dbef",
-          "#9ecae1",
-          "#6baed6",
-          "#4292c6",
-          "#2171b5",
-          "#08519c",
-          "#08306b")
-
-clr2 <- c("#fff5f0",
-          "#fee0d2",
-          "#fcbba1",
-          "#fc9272",
-          "#fb6a4a",
-          "#ef3b2c",
-          "#cb181d",
-          "#a50f15",
-          "#67000d")
-
-par(mfrow = c(1,2), mai = c(1, 1, 0.75, 0))
-plot.ts(x1, las = 1, col = "dodgerblue", lwd = 2, ylim = c(8, 16),
-        ylab = expression(italic(x[t])), main = "")
-mtext("Positive bias", side = 3, line = 1, cex = 2)
-for(i in 1:9) {
-  lines(cumsum(rnorm(30, 0.1, 0.3)) + 10,
-        col = clr1[i], lwd = 2)
-}
-
-plot.ts(x2, las = 1, col = "indianred", lwd = 2,  ylim = c(4, 12),
-        ylab = expression(italic(x[t])), main = "")
-mtext("Negative bias", side = 3, line = 1, cex = 2)
-for(i in 1:9) {
-  lines(cumsum(rnorm(30, -0.1, 0.3)) + 10,
-        col = clr2[i], lwd = 2)
-}
-```
-
-
----
-
-class: inverse, center, middle
-
-# Observation (data) model
-
-
----
-
-# Observation model
-
-### .blue-text[ In log-space ]
-
-$\underbrace{y_t}_{\substack{\text{observed} \\ \text{counts}}} = \underbrace{x_t}_{\substack{\text{true} \\ \text{counts}}} + \underbrace{v_t}_{\substack{\text{observer} \\ \text{error}}}$
-
-### .blue-text[ where ]
-
-$v_t \sim \text{N}(0, r)$
-
----
-
-# Example: biased RW's with observation error
-
-```{r ex_biased_rw_y, fig.dim = c(8,5), fig.align = 'center'}
-y1 <- x1 + rnorm(30, 0, 0.2)
-
-y2 <- x2 + rnorm(30, 0, 0.2)
-
-par(mfrow = c(1,2), mai = c(1, 1, 0.75, 0))
-plot.ts(x1, las = 1, col = "gray", lwd = 2, ylim = range(x1, y1),
-        ylab = expression(italic(x[t])), main = "")
-mtext("Positive bias", side = 3, line = 1, cex = 2)
-lines(y1, col = "dodgerblue", lwd = 2)
-
-plot.ts(x2, las = 1, col = "gray", lwd = 2, ylim = range(x2, y2),
-        ylab = expression(italic(x[t])), main = "")
-mtext("Negative bias", side = 3, line = 1, cex = 2)
-lines(y2, col = "indianred", lwd = 2)
-```
-
-
----
-
-class: inverse, center, middle
-
-# Multiple time series of abundance
-
-
----
-
-# The survey data are hierarchical
-
-### .blue-text[ 4 states ]
-
-### .purple-text[ 8 recovery units ]
-
-### .orange-text[ 61 core areas ]
-
-### .green-text[ 242 populations ]
-
-
----
-
-# Expanding our model for multiple core areas
-
-### .blue-text[ We're estimating population trends at the level of *core areas* ]
-
-### .blue-text[ Each core area gets its own model ]
-
-$$\begin{gathered}
-    x_{1,t} = x_{1,t-1} + u_1 + w_{1,t} \\
-    x_{2,t} = x_{2,t-1} + u_2 + w_{2,t} \\
-    \vdots \\
-    x_{n,t} = x_{n,t-1} + u_n + w_{n,t} \\
-  \end{gathered}$$
-
-
----
-
-# Observation model for multiple time series
-
-### .blue-text[ Core areas have 1-22 populations within them ]
-
-### .blue-text[ Each population is an observation from its respective core area ]
-
-
----
-
-# Observation model for multiple time series
-
-### .blue-text[ Example with 5 popns (1-5) from 2 core areas (A & B) ]
-
-$$\begin{gathered}
-    y_{1,t} = x_{A} + v_{1,t} \\
-    y_{2,t} = x_{A} + v_{2,t} \\
-    y_{3,t} = x_{B} + v_{3,t} \\
-    y_{4,t} = x_{B} + v_{4,t} \\
-    y_{5,t} = x_{B} + v_{5,t}
-  \end{gathered}$$
-
-
----
-
-# Example: 3 observations of a common state
-
-```{r multi_obs, fig.dim = c(6,4), fig.align = 'center'}
-y2 <- x1 + rnorm(30, 0, 0.4)
-y3 <- x1 + rnorm(30, 0, 0.5)
-
-## set colormap
-clr <- viridisLite::mako(4, begin = 0.4, end = 0.9)
-
-par(mai = c(1, 1, 0.1, 0.1))
-
-plot.ts(x1, las = 1, col = "gray", lwd = 2, ylim = range(x1, y1, y2, y3),
-        ylab = expression(paste(italic(x[t]), "  or  ", italic(y[t]))), main = "")
-lines(y1, col = clr[1], lwd = 2)
-lines(y2, col = clr[2], lwd = 2)
-lines(y3, col = clr[3], lwd = 2)
-```
-
-
----
-
-# Different survey methods have different levels of observation errors
-
-### .blue-text[ For example, weir counts are more accurate than snorkel surveys ]
-
-### .blue-text[ Multiple surveys of each type help inform the variance estimates ]
-
----
-
-# Fitting the models
-
-### .blue-text[ We used the time period from 1991-2020 ]
-
-### .blue-text[ Time series needed at least 10 years of non-missing data ]
-
-
----
-
-# Fitting the models
-
-### .blue-text[ We used the time period from 1991-2020 ]
-
-### .blue-text[ Time series needed at least 10 years of non-missing data ]
-
-### .green-text[ All models were fit in **R** using the `{MARSS}` package ]
-
-### .green-text[ I estimated 90% confidence intervals on bias terms ]
-
-
----
-
-class: inverse, center, middle
-
-# RESULTS
-
-
----
-
-# Bias in trends
-
-### .blue-text[ 35/61 core areas had a negative trend ]
-
-### .center.blue-text[ but only 3/61 were "signficantly" negative ]
-
-
----
-
-class: frimg, center
-background-image: url(figs/kootenai.png)
-background-position: 40% 70%
-background-size: 80%
-
-# Example of a significant decline
-
-
----
-
-class: frimg, center
-background-image: url(figs/stillaguamish.png)
-background-position: 40% 70%
-background-size: 80%
-
-# Example of a significant decline
-
-
----
-
-# Bias in trends
-
-### .blue-text[ 35/61 core areas had a negative trend ]
-
-### .center.blue-text[ but only 3/61 were "signficantly" negative ]
-
-<br>
-
-### .green-text[ 26/61 core areas had a positive trend ]
-
-### .center.green-text[ but only 6/61 were "signficantly" positive ]
-
-
----
-
-class: frimg, center
-background-image: url(figs/lower_deschutes.png)
-background-position: 40% 70%
-background-size: 80%
-
-# Example of a significant increase
-
-
----
-
-class: frimg, center
-background-image: url(figs/upper_whitefish.png)
-background-position: 40% 70%
-background-size: 80%
-
-# Example of a significant increase
-
-
----
-
-class: frimg, center
-background-image: url(figs/skokomish.png)
-background-position: 40% 70%
-background-size: 80%
-
-# Example of no systematic trend
-
-
----
-
-class: inverse, center, middle
-
-# Data quality influences our ability to estimate biases
-
----
-
-class: frimg, center
-background-image: url(figs/big_salmon.png)
-background-position: 40% 70%
-background-size: 80%
-
-# Example of a data-poor core area
-
-
----
-
-class: frimg, center
-background-image: url(figs/flathead.png)
-background-position: 40% 70%
-background-size: 80%
-
-# Example of a data-rich core area
-
 
 ---
 
