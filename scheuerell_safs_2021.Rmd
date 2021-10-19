@@ -128,7 +128,30 @@ class: middle
 
 class: inverse, center, middle
 
-# A model for estimating population trends with 2 general parts
+# Surely this process is easy given all of the data we have! 
+
+
+---
+
+class: frimg
+background-image: url(figs/no_evil.jpg)
+background-size: 90%
+
+
+---
+
+class: inverse, center, middle
+
+# Most of the data is gappy, noisy, and comes from disparate sources
+
+
+---
+
+class: middle
+
+# Q: How can we use this information to inform decisions?
+
+# A: One option is a state-space model
 
 ---
 
@@ -389,7 +412,7 @@ background-size: cover
 
 ---
 
-# Bull trout assessment team
+# Bull trout status assessment team
 
 .pull-left[
 
@@ -1091,6 +1114,7 @@ background-size: 90%
 # Image sources
 
 .blue-text[
+Chimps: *Lantern Press*  
 Carnival: *Frank Kovalchek*   
 Robin Hood: *John Escott*  
 Camp Harmony: *MOHAI*  
