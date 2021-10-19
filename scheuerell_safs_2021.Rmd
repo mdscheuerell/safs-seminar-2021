@@ -576,6 +576,15 @@ background-size: 60%
 ### Listed as threatened under ESA in 1999
 ]
 
+
+---
+
+class: frimg, inverse
+background-image: url(figs/bull_trout_range_map.jpg)
+background-position: 50% 50%
+background-size: cover
+
+
 ---
 
 class: inverse, center, middle
@@ -848,7 +857,7 @@ class: inverse, center, middle
 
 ### .blue-text[ 35/61 core areas had a negative trend ]
 
-### .blue-text[ But only 3/61 were "signficantly" negative ]
+### .center.blue-text[ but only 3/61 were "signficantly" negative ]
 
 
 ---
@@ -877,13 +886,13 @@ background-size: 80%
 
 ### .blue-text[ 35/61 core areas had a negative trend ]
 
-### .blue-text[ But only 3/61 were "signficantly" negative ]
+### .center.blue-text[ but only 3/61 were "signficantly" negative ]
 
 <br>
 
 ### .green-text[ 26/61 core areas had a positive trend ]
 
-### .green-text[ But only 6/61 were "signficantly" positive ]
+### .center.green-text[ but only 6/61 were "signficantly" positive ]
 
 
 ---
