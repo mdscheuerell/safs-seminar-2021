@@ -23,8 +23,11 @@ background-size: 100%
 ---
 
 class: center, middle
+
 # Examining long-term trends in the size and abundance of at-risk salmonids in the PNW
+
 ## Mark Scheuerell
+
 _U.S. Geological Survey<br>Washington Cooperative Fish and Wildlife Research Unit<br>School of Aquatic and Fishery Sciences<br>University of Washington<br>Seattle, WA_
 
 .futnote.purple-text[`r icon_style(fontawesome("envelope"), fill = "#844870")` scheuerl@uw.edu]
@@ -54,12 +57,9 @@ class: middle
 
 # ESA is administered by two federal agencies
 
-.green-text[
-## Fish and Wildlife Service (FWS)
-]
-.blue-text[
-## National Marine Fisheries Service (NMFS)
-]
+.pull-left-img[![](figs/usfws_logo.svg)]
+
+.pull-right-img[![](figs/nmfs_logo.png)]
 
 
 ---
