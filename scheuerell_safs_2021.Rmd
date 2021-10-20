@@ -46,15 +46,6 @@ class: middle
 
 ---
 
-class: middle
-
-# In 1978 the US Supreme Court ruled that
-
-> ## The plain intent of Congress in enacting [the ESA] was to halt and reverse the trend toward species extinction, whatever the cost.
-
-
----
-
 <br>
 
 # ESA is administered by two federal agencies
@@ -89,7 +80,7 @@ class: middle
 # ESA status reviews
 
 .blue-text[
-### Required every 5 years to ensure that listed species have appropriate protections
+### Required every 5 years to ensure listed species have appropriate protections
 
 ### Considerations include
 ]
@@ -108,19 +99,19 @@ class: middle
 # 4 possible outcomes of ESA status reviews
 
 .red-text[
-### 1. reclassified from threatened to endangered (uplist)
+### 1. Reclassify from threatened to endangered (uplist)
 ]
 
 .blue-text[
-### 2. maintained at current classification
+### 2. Maintain at current classification
 ]
 
 .green-text[
-### 3. reclassified from endangered to threatened (downlist)
+### 3. Reclassify from endangered to threatened (downlist)
 ]
 
 .green-text[
-### 4. removed from the list (delist)
+### 4. Remove from the list (delist)
 ]
 
 
@@ -151,7 +142,7 @@ class: middle
 
 # Q: How can we use this information to inform decisions?
 
-# A: One option is a state-space model
+# A: For time series, one option is a state-space model
 
 ---
 
