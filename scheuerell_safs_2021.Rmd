@@ -666,6 +666,16 @@ lines(y3, col = clr[3], lwd = 2)
 
 ---
 
+class: frimg
+background-image: url(figs/bulltrout_sampling.png)
+background-position: 50% 60%
+background-size: 95%
+
+# Sampling methods
+
+
+---
+
 # Different survey methods have different levels of observation errors
 
 ### .blue-text[ For example, weir counts are more accurate than snorkel surveys ]
@@ -1112,6 +1122,7 @@ background-size: 90%
 Chimps: *Lantern Press*  
 Carnival: *Frank Kovalchek*   
 Robin Hood: *John Escott*  
+Bull trout sampling: *Brett Bowersox*  
 Camp Harmony: *MOHAI*  
 Tengu derby: *Tom Quinn*  
 Purse seiner: *Jim Borrow*  
