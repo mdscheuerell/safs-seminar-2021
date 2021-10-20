@@ -1006,9 +1006,9 @@ Photo: J Borrow
 ---
 
 class: frimg, center
-background-image: url(figs/ts_plot_both_sizes.png)
+background-image: url(figs/tengu_both_sizes.png)
 background-position: 35% 65%
-background-size: 90%
+background-size: 80%
 
 # Sizes from derby & purse seine fishery
 
@@ -1056,11 +1056,11 @@ class: middle, center
 ---
 
 class: frimg, center
-background-image: url(figs/ts_plot_both_sizes_fits.png)
+background-image: url(figs/tengu_both_sizes_fits.png)
 background-position: 35% 65%
-background-size: 90%
+background-size: 80%
 
-# Estimated trends in size
+# Estimated trends in sizes
 
 ---
 
