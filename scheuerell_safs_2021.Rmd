@@ -860,6 +860,19 @@ background-size: 75%
 
 ---
 
+# Size of salmon matters because...
+
+-blue-text[
+### bigger females have more eggs, bigger eggs & are likely more productive
+
+### fisheries are managed on a per-fish basis & thus smaller fish mean less food
+
+### smaller fish may signal issues with habitat
+]
+
+
+---
+
 class: frimg, inverse
 background-image: url(figs/ps_chin_esu.png)
 background-position: 50% 50%
