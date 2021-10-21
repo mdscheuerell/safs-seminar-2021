@@ -671,7 +671,7 @@ background-image: url(figs/bulltrout_sampling.png)
 background-position: 50% 60%
 background-size: 95%
 
-# Sampling methods
+# Varying sampling methods
 
 
 ---
@@ -1004,8 +1004,6 @@ background-image: url(figs/purse_seiner.jpg)
 background-position: 50% 50%
 background-size: 90%
 
-Photo: J Borrow
-
 
 ---
 
@@ -1091,9 +1089,9 @@ background-size: 80%
 
 ## Open science
 
-### .blue-text[https://github.com/mdscheuerell/tengu]
-
 ### .blue-text[https://github.com/mdscheuerell/bulltrout]
+
+### .blue-text[https://github.com/mdscheuerell/tengu]
 
 ## Image credits
 
@@ -1103,6 +1101,7 @@ Carnival: *Frank Kovalchek*
 Robin Hood: *John Escott*  
 Bull trout sampling: *Brett Bowersox*  
 Camp Harmony: *MOHAI*  
+Blackmouth: *WDFW*  
 Tengu derby: *Tom Quinn*  
 Purse seiner: *Jim Borrow*  
 ]
