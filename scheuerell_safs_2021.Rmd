@@ -56,7 +56,7 @@ class: middle
 
 class: inverse, center, middle
 
-# There are over 1300 species listed under the US Endangered Species Act
+# There are over 1300 species listed under the Endangered Species Act
 
 
 ---
@@ -75,19 +75,19 @@ class: inverse, center, middle
 # Key provisions of the ESA
 
 .blue-text[
-### Determine whether species are threatened or endangered (&sect; 4)
+### Determine whether species are threatened or endangered (&sect;4)
 ]
 
 .purple-text[
-### Agencies will use their authorities to conserve listed species (&sect; 7)
+### Agencies will use their authorities to conserve listed species (&sect;7)
 ]
 
 .purple-text[
-### Agencies cannot jeopardize listed species' existence or destroy critical habitat (&sect; 7)
+### Agencies cannot jeopardize listed species' existence or destroy critical habitat (&sect;7)
 ]
 
 .red-text[
-### It's illegal to kill, harm or harass ("take") a listed species (&sect; 9)
+### It's illegal to kill, harm or harass ("take") a listed species (&sect;9)
 ]
 
 
@@ -409,7 +409,7 @@ background-size: 60%
 
 ### Mature at 4-7 years of age
 
-### Listed as threatened under ESA in 1999
+### Listed as threatened under the ESA in 1999
 ]
 
 
@@ -708,7 +708,7 @@ background-size: 95%
 
 # Fitting the models
 
-### .blue-text[ We used the time period from 1991-2020 ]
+### .blue-text[ We used the 30-year time period from 1991-2020 ]
 
 ### .blue-text[ Time series needed at least 10 years of non-missing data ]
 
@@ -717,7 +717,7 @@ background-size: 95%
 
 # Fitting the models
 
-### .blue-text[ We used the time period from 1991-2020 ]
+### .blue-text[ We used the 30-year time period from 1991-2020 ]
 
 ### .blue-text[ Time series needed at least 10 years of non-missing data ]
 
@@ -866,7 +866,7 @@ background-size: 75%
 
 ### fisheries are managed on a per-fish basis & thus smaller fish mean less food
 
-### smaller fish may signal issues with habitat
+### smaller fish may signal problems with habitat
 ]
 
 
@@ -882,9 +882,9 @@ background-size: 58%
 
 # Collaborators
 
-## .blue-text[ Tom Quinn (SAFS) ]
+## .blue-text[ Tom Quinn (UW SAFS) ]
 
-## .blue-text[ James Losee (WDFW) ]
+## .blue-text[ James Losee (WA Dept Fish & Wildlife) ]
 
 <br>
 
@@ -913,8 +913,19 @@ background-size: 55%
 
 ---
 
+class: frimg, left, middle, inverse
+background-image: url(figs/tengu_art.jpg)
+background-position: 100% 50%
+background-size: 26%
+
+.pull-left-wide[
+> ## The name 'Tengu' is from Japanese folklore that describes mythical creatures that were mischievous braggarts. Their long noses are symbolic of exaggerating the truth, which is typical of fish stories.
+]
+
+---
+
 background-image: url(figs/blackmouth_head_wdfw.jpg)
-background-position: 50% 82%
+background-position: 50% 70%
 background-size: 35%
 
 # "Blackmouth" Chinook salmon
@@ -1048,7 +1059,7 @@ background-image: url(figs/tengu_size_fit.png)
 background-position: 45% 70%
 background-size: 85%
 
-# Estimated true size
+# True size follows a random walk
 
 
 ---
@@ -1125,20 +1136,24 @@ background-size: 80%
 
 # Estimated trends in sizes
 
+
 ---
 
-# Summary
+class: middle
+
+# Chinook salmon from .green-text[common origins] with .green-text[different migration patterns] show .green-text[different patterns in size]
+
+
+---
+
+# Big picture
 
 .blue-text[
-## Something about ESA
-]
+## The ESA is an unfortunate, but necessary & successful piece of legislation
 
-.orange-text[
-## Something about data quality
-]
+## Data quality affects our ability to make decisions
 
-.green-text[
-## Something about collaborative science
+## Great minds <u>do not</u> think alike
 ]
 
 .futnote.purple-text[`r icon_style(fontawesome("envelope"), fill = "#844870")` scheuerl@uw.edu]
@@ -1165,7 +1180,7 @@ Camp Harmony: *MOHAI*
 
 Blackmouth: *WDFW*  
 
-Tengu derby: *Tom Quinn*  
+Tengu derby: *Tom Quinn (photos)* & *Utagawa Kuniyoshi (artwork)*  
 
 Purse seiner: *Jim Borrow*  
 ]
