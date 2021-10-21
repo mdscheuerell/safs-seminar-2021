@@ -37,6 +37,14 @@ _U.S. Geological Survey<br>Washington Cooperative Fish and Wildlife Research Uni
 
 ---
 
+class: frimg, inverse
+background-image: url(figs/iucn_species.jpeg)
+background-position: 50% 50%
+background-size: 75%
+
+
+---
+
 class: middle
 
 # Endangered Species Act of 1973
@@ -74,6 +82,28 @@ class: middle
 .red-text[
 ### It's illegal to kill, harm or harass ("take") a listed species (&sect; 9)
 ]
+
+
+---
+
+class: inverse, center, middle
+
+# There are over 1300 species listed under the US Endangered Species Act
+
+
+---
+
+class: frimg
+background-image: url(figs/recovery_domains.png)
+background-position: 80% 50%
+background-size: 39%
+
+# ESA-listed salmon
+
+.blue-text[
+### 176,000 square miles
+]
+
 
 ---
 
@@ -133,7 +163,7 @@ background-size: 90%
 
 class: inverse, center, middle
 
-# Most of the data is gappy, noisy, and comes from disparate sources
+# Most of the data are gappy, noisy, and come from disparate sources
 
 
 ---
@@ -715,7 +745,7 @@ class: inverse, center, middle
 
 # Bias in trends
 
-### .blue-text[ 35/61 core areas had a negative trend ]
+### .blue-text[ 37/62 core areas had a negative trend ]
 
 ### .center.blue-text[ but only 3/61 were "signficantly" negative ]
 
@@ -744,15 +774,15 @@ background-size: 80%
 
 # Bias in trends
 
-### .blue-text[ 35/61 core areas had a negative trend ]
+### .blue-text[ 37/62 core areas had a negative trend ]
 
-### .center.blue-text[ but only 3/61 were "signficantly" negative ]
+### .center.blue-text[ but only 3/62 were "signficantly" negative ]
 
 <br>
 
-### .green-text[ 26/61 core areas had a positive trend ]
+### .green-text[ 27/62 core areas had a positive trend ]
 
-### .center.green-text[ but only 6/61 were "signficantly" positive ]
+### .center.green-text[ but only 5/62 were "signficantly" positive ]
 
 
 ---
@@ -809,6 +839,14 @@ background-position: 40% 70%
 background-size: 80%
 
 # Example of a data-rich core area
+
+
+---
+
+# Decreases in sizes of Chinook salmon
+
+
+.citation[ Ohlberger et al. (2018) *Fish and Fisheries*]
 
 
 ---
