@@ -156,15 +156,19 @@ class: inverse, center, middle
 
 class: middle
 
+.blue-text[
 # Q: How can we use this information to inform decisions?
+]
+.green-text[
+# A: For trends over time, one option is a state-space model
+]
 
-# A: For time series, one option is a state-space model
 
 ---
 
 # Part 1: State model
 
-## Describes the .blue-text[true state of nature] over time or space
+## Describes the .blue-text[true state of nature] over time
 
 ```{r state_diag, dpi=300, fig.height=4, fig.width=8, out.height="100%", out.width="100%", fig.align='center', echo=FALSE, warning=FALSE}
 par(mai=c(0.8,0.8,0,0), omi=rep(0,4))
@@ -193,7 +197,7 @@ arrows(x0=x0t,x1=x1t,y0=ymt, col="#488fdf", lwd=3, length=0.12)
 ## Time or space
 arrows(x0=ss/2, x1=cc-ss/2, y0=-ss/3+ss*2,
        length=0.12, lwd=3, xpd=NA)
-text("Time or space", x=cc/2, y=-ss/2+ss*2, xpd=NA, pos=1, cex=2)
+text("Time", x=cc/2, y=-ss/2+ss*2, xpd=NA, pos=1, cex=2)
 ```
 
 ---
@@ -292,7 +296,7 @@ arrows(x0=xm[c(1,3,5,7)], y0=y0b, y1=y1b,
 ## Time or space
 arrows(x0=ss/2, x1=cc-ss/2, y0=-ss/3,
        length=0.12, lwd=3, xpd=NA)
-text("Time or space", x=cc/2, y=-ss/2, xpd=NA, pos=1, cex=2)
+text("Time", x=cc/2, y=-ss/2, xpd=NA, pos=1, cex=2)
 ```
 
 ---
@@ -396,7 +400,7 @@ background-image: url(figs/bull_trout_art.png)
 background-position: 50% 90%
 background-size: 60%
 
-# Bull trout
+# Bull trout *Salvelinus confluentus*
 
 .green-text[
 ### Native to the Pacific Northwest & Canada
@@ -692,11 +696,13 @@ background-size: 95%
 
 ---
 
-# Different survey methods have different levels of observation errors
+# Varying sampling methods
 
-### .blue-text[ For example, weir counts are more accurate than snorkel surveys ]
+.blue-text[ 
+### Different methods have different levels of observation errors<br>(eg, weir counts are more accurate than snorkel surveys)
 
-### .blue-text[ Multiple surveys of each type help inform the variance estimates ]
+### Multiple surveys of each type help inform the variance estimates 
+]
 
 ---
 
@@ -718,13 +724,6 @@ background-size: 95%
 ### .green-text[ All models were fit in **R** using the `{MARSS}` package ]
 
 ### .green-text[ I estimated 90% confidence intervals on bias terms ]
-
-
----
-
-class: inverse, center, middle
-
-# RESULTS
 
 
 ---
@@ -766,7 +765,7 @@ background-size: 80%
 
 <br>
 
-### .green-text[ 27/62 core areas had a positive trend ]
+### .green-text[ 25/62 core areas had a positive trend ]
 
 ### .center.green-text[ but only 5/62 were "signficantly" positive ]
 
@@ -862,7 +861,7 @@ background-size: 75%
 
 # Size of salmon matters because...
 
--blue-text[
+.blue-text[
 ### bigger females have more eggs, bigger eggs & are likely more productive
 
 ### fisheries are managed on a per-fish basis & thus smaller fish mean less food
@@ -1149,26 +1148,43 @@ background-size: 80%
 
 ---
 
-## Open science
-
-### .blue-text[https://github.com/mdscheuerell/bulltrout]
-
-### .blue-text[https://github.com/mdscheuerell/tengu]
-
 ## Image credits
 
 .blue-text[
+IUCN List: *Statista*  
+
 Chimps: *Lantern Press*  
+
 Carnival: *Frank Kovalchek*   
+
 Robin Hood: *John Escott*  
+
 Bull trout sampling: *Brett Bowersox*  
+
 Camp Harmony: *MOHAI*  
+
 Blackmouth: *WDFW*  
+
 Tengu derby: *Tom Quinn*  
+
 Purse seiner: *Jim Borrow*  
 ]
+
+
+---
+
+## Open science
+
+### https://github.com/mdscheuerell/bulltrout
+
+### https://github.com/mdscheuerell/tengu
+
+## Presentation
+
+### https://github.com/mdscheuerell/safs-seminar-2021
 
 .futnote.purple-text[`r icon_style(fontawesome("envelope"), fill = "#844870")` scheuerl@uw.edu]
 
 .citation.blue-text[`r icon_style(fontawesome("twitter"), fill = "#488fdf")` @mark_scheuerell]
+
 
