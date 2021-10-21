@@ -54,6 +54,13 @@ class: middle
 
 ---
 
+class: inverse, center, middle
+
+# There are over 1300 species listed under the US Endangered Species Act
+
+
+---
+
 <br>
 
 # ESA is administered by two federal agencies
@@ -81,27 +88,6 @@ class: middle
 
 .red-text[
 ### It's illegal to kill, harm or harass ("take") a listed species (&sect; 9)
-]
-
-
----
-
-class: inverse, center, middle
-
-# There are over 1300 species listed under the US Endangered Species Act
-
-
----
-
-class: frimg
-background-image: url(figs/recovery_domains.png)
-background-position: 80% 50%
-background-size: 39%
-
-# ESA-listed salmon
-
-.blue-text[
-### 176,000 square miles
 ]
 
 
@@ -843,17 +829,42 @@ background-size: 80%
 
 ---
 
-# Decreases in sizes of Chinook salmon
+class: inverse, center, middle
 
-
-.citation[ Ohlberger et al. (2018) *Fish and Fisheries*]
+# Pacific salmon in the Pacific Northwest
 
 
 ---
 
-class: inverse, center, middle
+class: frimg, right
+background-image: url(figs/recovery_domains.png)
+background-position: 0% 50%
+background-size: 53%
 
-# The Tengu Derby
+<br>
+## .red-text[57%] of Pacific salmon stocks<br>in the continental US are<br>.red-text[listed under the ESA]
+
+
+---
+
+class: frimg, center
+background-image: url(figs/ohlberger.png)
+background-position: 50% 65%
+background-size: 75%
+
+# Decreases in sizes of Chinook salmon
+
+
+.futnote[ Ohlberger et al. (2018) *Fish and Fisheries*]
+
+
+---
+
+class: frimg, inverse
+background-image: url(figs/ps_chin_esu.png)
+background-position: 50% 50%
+background-size: 58%
+
 
 ---
 
@@ -897,7 +908,7 @@ background-size: 35%
 # "Blackmouth" Chinook salmon
 
 .blue-text[
-### Resident fish that feed in the Salish Sea year-round until they mature and spawn
+### Feed in the Salish Sea year-round until they mature and spawn
 
 ### Targeted by anglers in fall and winter
 ]
